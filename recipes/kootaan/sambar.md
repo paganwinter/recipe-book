@@ -1,5 +1,5 @@
 ---
-tags: [koitaan, sambar]
+tags: [kootaan, sambar]
 ---
 
 # Sambar

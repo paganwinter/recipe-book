@@ -1,3 +1,3 @@
 # Recipes
 
-## [Kootaan](kootan)
+## [Kootaan](kootaan)

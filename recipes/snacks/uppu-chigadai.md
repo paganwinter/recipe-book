@@ -1,5 +1,7 @@
+# Uppu Chigadai (Cheedai)
+
 ## Ingredients
-- Dosa rice - 3 cups
+- Dosa rice [3 cups]
 
 ## Steps
 ### Prepare rice powder

@@ -59,7 +59,7 @@ window.onload = async function () {
   const $tagCheckboxes = []
   const $recipesList = document.getElementById('recipes-list')
 
-  const recipes = await fetch('/recipes.json').then((res) => res.json())
+  const recipes = await fetch('/recipe-book/recipes.json').then((res) => res.json())
   console.log('recipes:', recipes)
   renderRecipes(recipes)
 

@@ -207,6 +207,7 @@ window.onload = async function () {
     renderRecipes(filtered)
   }
   function renderRecipes(recipes) {
+    document.title = 'Recipes'
     // $recipeDetails.style.display = 'none'
     // $recipesList.style.display = 'block'
     $mainContainer.innerHTML = recipes.map(rec => {
@@ -234,8 +235,9 @@ window.onload = async function () {
       renderNotFound()
       return
     }
-
     console.log('displaying recipe', rec)
+
+    document.title = rec.name
     // $recipesList.style.display = 'none'
     // $recipeDetails.style.display = 'block'
     $mainContainer.innerHTML = `

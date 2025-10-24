@@ -101,6 +101,7 @@ async function main() {
 
   // require('util').inspect.defaultOptions.depth = null;
   // console.log(recipesParsed)
-  fs.writeFileSync('recipes.json', JSON.stringify(recipesParsed, null, 2), 'utf-8');
+  fs.writeFileSync('recipes.json', JSON.stringify(recipesParsed), 'utf-8');
+  fs.writeFileSync('recipes.yaml', yaml.dump(recipesParsed), 'utf-8');
 }
 main();

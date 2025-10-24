@@ -1,0 +1,270 @@
+- file: recipe-2.md
+  name: Dish Two name
+  category: palahaaram
+  tags:
+    - sweet
+    - breakfast
+  recipeMd: |
+    # Dish Two name
+    What is this dish about
+
+    - Category: kootan
+    - Tags: savoury, daily
+    - Cooking Time: 2 hours
+    - Serves: 3
+
+    ---
+
+    ## Ingredients
+
+    ### Paste
+    - Coconut (grated) `1 cup`
+    - Sugar `to taste`
+
+    ---
+
+    ## Directions
+
+    ### Paste
+    1. Make sweet.
+    2. Add water to adjust consistency if needed.
+
+
+    ---
+
+    ## Notes
+    > some notes about the dish here
+  rawContent: |
+    ---
+    category: palahaaram
+    tags: [sweet, breakfast]
+    ---
+
+    # Dish Two name
+    What is this dish about
+
+    - Category: kootan
+    - Tags: savoury, daily
+    - Cooking Time: 2 hours
+    - Serves: 3
+
+    ---
+
+    ## Ingredients
+
+    ### Paste
+    - Coconut (grated) `1 cup`
+    - Sugar `to taste`
+
+    ---
+
+    ## Directions
+
+    ### Paste
+    1. Make sweet.
+    2. Add water to adjust consistency if needed.
+
+
+    ---
+
+    ## Notes
+    > some notes about the dish here
+- file: recipe-3.md
+  name: Dish name three
+  category: kootan
+  tags:
+    - savoury
+    - onam
+  recipeMd: |
+    # Dish name three
+    What is this dish about
+
+    - Category: kootan
+    - Tags: savoury, onam
+    - Cooking Time: 2 hours
+    - Serves: 3
+
+    ---
+
+    ## Ingredients
+
+    ### Paste
+    - Coconut (grated) `1 cup`
+    - Tamarid
+    - Salt `to taste`
+    - Coconut (grated): 1 cup
+    - Tamarid
+    - Salt: to taste
+
+    ### Garnish
+    - curry leaves `4 no`
+
+    ---
+
+    ## Directions
+
+    ### Paste
+    1. Soak tamarind in warm water for 10 minutes, then extract the juice.
+    2. Grind coconut with tamarind juice to make a smooth paste.
+    3. Add water to adjust consistency if needed.
+
+    ### Garnish
+    1. Garnish with currey leaves and coriander
+
+    ---
+
+    ## Notes
+    > some notes about the dish here
+  rawContent: |
+    ---
+    category: kootan
+    tags: [savoury, onam]
+    ---
+
+    # Dish name three
+    What is this dish about
+
+    - Category: kootan
+    - Tags: savoury, onam
+    - Cooking Time: 2 hours
+    - Serves: 3
+
+    ---
+
+    ## Ingredients
+
+    ### Paste
+    - Coconut (grated) `1 cup`
+    - Tamarid
+    - Salt `to taste`
+    - Coconut (grated): 1 cup
+    - Tamarid
+    - Salt: to taste
+
+    ### Garnish
+    - curry leaves `4 no`
+
+    ---
+
+    ## Directions
+
+    ### Paste
+    1. Soak tamarind in warm water for 10 minutes, then extract the juice.
+    2. Grind coconut with tamarind juice to make a smooth paste.
+    3. Add water to adjust consistency if needed.
+
+    ### Garnish
+    1. Garnish with currey leaves and coriander
+
+    ---
+
+    ## Notes
+    > some notes about the dish here
+- file: recipe-template.md
+  name: Dish name
+  category: kootan
+  tags:
+    - savoury
+    - daily
+  recipeMd: |
+    # Dish name
+    What is this dish about
+
+    - Category: kootan
+    - Tags: savoury, daily
+    - Cooking Time: 2 hours
+    - Serves: 3
+
+    ---
+
+    ## Ingredients
+
+    ### Paste
+    - Coconut (grated) `1 cup`
+    - Tamarid
+    - Salt `to taste`
+    - Coconut (grated): 1 cup
+    - Tamarid
+    - Salt: to taste
+
+    ### Garnish
+    - curry leaves `4 no`
+
+    ---
+
+    ## Directions
+
+    ### Paste
+    1. Soak tamarind in warm water for 10 minutes, then extract the juice.
+    2. Grind coconut with tamarind juice to make a smooth paste.
+    3. Add water to adjust consistency if needed.
+
+    ### Garnish
+    1. Garnish with currey leaves and coriander
+
+    ---
+
+    ## Notes
+    > some notes about the dish here
+  rawContent: |
+    ---
+    category: kootan
+    tags: [savoury, daily]
+    ---
+
+    # Dish name
+    What is this dish about
+
+    - Category: kootan
+    - Tags: savoury, daily
+    - Cooking Time: 2 hours
+    - Serves: 3
+
+    ---
+
+    ## Ingredients
+
+    ### Paste
+    - Coconut (grated) `1 cup`
+    - Tamarid
+    - Salt `to taste`
+    - Coconut (grated): 1 cup
+    - Tamarid
+    - Salt: to taste
+
+    ### Garnish
+    - curry leaves `4 no`
+
+    ---
+
+    ## Directions
+
+    ### Paste
+    1. Soak tamarind in warm water for 10 minutes, then extract the juice.
+    2. Grind coconut with tamarind juice to make a smooth paste.
+    3. Add water to adjust consistency if needed.
+
+    ### Garnish
+    1. Garnish with currey leaves and coriander
+
+    ---
+
+    ## Notes
+    > some notes about the dish here
+- file: sambar.md
+  name: Sambar
+  category: kootan
+  tags:
+    - savoury
+    - daily
+  recipeMd: "# Sambar\r\n\r\n## Ingredients\r\n- Tur dal\r\n\r\n## Instructions\r\n1. \r\n"
+  rawContent: "---\r\ncategory: kootan\r\ntags: [savoury, daily]\r\n---\r\n\r\n# Sambar\r\n\r\n## Ingredients\r\n- Tur dal\r\n\r\n## Instructions\r\n1. \r\n"
+- file: uppu-chigadai.md
+  name: Uppu Chigadai (Cheedai)
+  category: snacks
+  tags:
+    - savoury
+    - gokulashtami
+    - festival
+  recipeMd: "# Uppu Chigadai (Cheedai)\r\nDescription here\r\n\r\n---\r\n## Ingredients\r\n- Dosa rice [3 cups]\r\n\r\n---\r\n## Instructions\r\n\r\n### Prepare rice powder\r\n\r\n> Can be kept for up to a month\r\n\r\n- Soak rice in water for 2-3 hours \r\n- Dry it till water is gone (on cloth)\r\n- Grind in mixer till fine\r\n- Sieve twice to make sure it's fine\r\n- Keep it for drying for 2-3 hours\r\n- Roast in wok, till dry (can use to put kolam)\r\n- Once cool, sieve again\r\n\r\n"
+  rawContent: "---\r\ncategory: snacks\r\ntags: [savoury, gokulashtami, festival]\r\n---\r\n\r\n# Uppu Chigadai (Cheedai)\r\nDescription here\r\n\r\n---\r\n## Ingredients\r\n- Dosa rice [3 cups]\r\n\r\n---\r\n## Instructions\r\n\r\n### Prepare rice powder\r\n\r\n> Can be kept for up to a month\r\n\r\n- Soak rice in water for 2-3 hours \r\n- Dry it till water is gone (on cloth)\r\n- Grind in mixer till fine\r\n- Sieve twice to make sure it's fine\r\n- Keep it for drying for 2-3 hours\r\n- Roast in wok, till dry (can use to put kolam)\r\n- Once cool, sieve again\r\n\r\n"

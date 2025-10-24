@@ -1,5 +1,7 @@
 # Recipe Book
 
+https://paganwinter.github.io/recipe-book
+
 <!--
 For spec:
 https://github.com/cnstoll/Grocery-Recipe-Format

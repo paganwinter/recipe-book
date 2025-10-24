@@ -1,5 +1,5 @@
 - file: recipe-template.md
-  name: Dish name
+  name: Recipe Template
   category: kootan
   tags:
     - savoury
@@ -7,7 +7,7 @@
   cook-time: 1h 30m
   serves: 3
   recipeMd: |
-    # Dish name
+    # Recipe Template
     What is this dish about
 
     ---
@@ -46,7 +46,7 @@
     serves: 3
     ---
 
-    # Dish name
+    # Recipe Template
     What is this dish about
 
     ---
@@ -83,8 +83,8 @@
   tags:
     - savoury
     - daily
-  recipeMd: "# Sambar\r\n\r\n---\r\n## Ingredients\r\n### Main\r\n- Tamarind `1 tbsp`\r\n- Tur dal `1 cup`\r\n- Salt\r\n- Turmeric\r\n\r\n### Vegetables\r\n- Elavan (Ash gourd)\r\n- Drumstick\r\n- Ladies Finger\r\n- Chaebu (Colocasia)\r\n- Pumpkin\r\n- Tomato\r\n- Brinjal\r\n- Avarrakai (Broad beans)\r\n- Sweet Potato\r\n- Potato\r\n- Onion\r\n- Capsicum\r\n\r\n### Masala\r\n- Coconut grated `1 cup`\r\n- Chana Daal `1 tbsp`\r\n- Red Chilli `4-5 nos`\r\n- Coriander seeds `1 tsp`\r\n- Fenugreek seeds `1/4 tsp`\r\n- Asafoetida `1/4 tsp`\r\n- Oil `1/2 tsp`\r\n\r\n### Porichukotta / Tadka\r\n- Mustard\t`1 tsp`\r\n- Curry leaves\r\n- Oil `1 tbsp`\r\n- Coriander leaves\r\n\r\n---\r\n## Instructions\r\n1. Boil tur dal with turmeric in a cooker (3 whistles). Add soaked tamarind in a separate bowl along with it.\r\n2. Boil vegetables with turmeric powder.\r\n   1. Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\r\n   2. Chaebu, Elavan, Drumstick - Can boil along with dal.\r\n   3. Onions - Roast in little oil.\r\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\r\n4. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients. Add coconut and grind to paste in mixer.\r\n5. Add the paste to the boiling vegetables and lightly boil for 2 mins.\r\n6. Tadka - Add mustard to oil, and once it crackles, add curry leaves. Pour over kootaan.\r\n7. Garnish with coriander leaves.\r\n"
-  contentRaw: "---\r\ncategory: Kootan\r\ntags: [savoury, daily]\r\n---\r\n\r\n# Sambar\r\n\r\n---\r\n## Ingredients\r\n### Main\r\n- Tamarind `1 tbsp`\r\n- Tur dal `1 cup`\r\n- Salt\r\n- Turmeric\r\n\r\n### Vegetables\r\n- Elavan (Ash gourd)\r\n- Drumstick\r\n- Ladies Finger\r\n- Chaebu (Colocasia)\r\n- Pumpkin\r\n- Tomato\r\n- Brinjal\r\n- Avarrakai (Broad beans)\r\n- Sweet Potato\r\n- Potato\r\n- Onion\r\n- Capsicum\r\n\r\n### Masala\r\n- Coconut grated `1 cup`\r\n- Chana Daal `1 tbsp`\r\n- Red Chilli `4-5 nos`\r\n- Coriander seeds `1 tsp`\r\n- Fenugreek seeds `1/4 tsp`\r\n- Asafoetida `1/4 tsp`\r\n- Oil `1/2 tsp`\r\n\r\n### Porichukotta / Tadka\r\n- Mustard\t`1 tsp`\r\n- Curry leaves\r\n- Oil `1 tbsp`\r\n- Coriander leaves\r\n\r\n---\r\n## Instructions\r\n1. Boil tur dal with turmeric in a cooker (3 whistles). Add soaked tamarind in a separate bowl along with it.\r\n2. Boil vegetables with turmeric powder.\r\n   1. Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\r\n   2. Chaebu, Elavan, Drumstick - Can boil along with dal.\r\n   3. Onions - Roast in little oil.\r\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\r\n4. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients. Add coconut and grind to paste in mixer.\r\n5. Add the paste to the boiling vegetables and lightly boil for 2 mins.\r\n6. Tadka - Add mustard to oil, and once it crackles, add curry leaves. Pour over kootaan.\r\n7. Garnish with coriander leaves.\r\n"
+  recipeMd: "# Sambar\n\n---\n## Ingredients\n### Main\n- Tamarind `1 tbsp`\n- Tur dal `1 cup`\n- Salt\n- Turmeric\n\n### Vegetables\n- Elavan (Ash gourd)\n- Drumstick\n- Ladies Finger\n- Chaebu (Colocasia)\n- Pumpkin\n- Tomato\n- Brinjal\n- Avarrakai (Broad beans)\n- Sweet Potato\n- Potato\n- Onion\n- Capsicum\n\n### Masala\n- Coconut grated `1 cup`\n- Chana Daal `1 tbsp`\n- Red Chilli `4-5 nos`\n- Coriander seeds `1 tsp`\n- Fenugreek seeds `1/4 tsp`\n- Asafoetida `1/4 tsp`\n- Oil `1/2 tsp`\n\n### Porichukotta / Tadka\n- Mustard\t`1 tsp`\n- Curry leaves\n- Oil `1 tbsp`\n- Coriander leaves\n\n---\n## Instructions\n1. Boil tur dal with turmeric in a cooker (3 whistles). Add soaked tamarind in a separate bowl along with it.\n2. Boil vegetables with turmeric powder.\n   1. Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\n   2. Chaebu, Elavan, Drumstick - Can boil along with dal.\n   3. Onions - Roast in little oil.\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\n4. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients. Add coconut and grind to paste in mixer.\n5. Add the paste to the boiling vegetables and lightly boil for 2 mins.\n6. Tadka - Add mustard to oil, and once it crackles, add curry leaves. Pour over kootaan.\n7. Garnish with coriander leaves.\n"
+  contentRaw: "---\ncategory: Kootan\ntags: [savoury, daily]\n---\n\n# Sambar\n\n---\n## Ingredients\n### Main\n- Tamarind `1 tbsp`\n- Tur dal `1 cup`\n- Salt\n- Turmeric\n\n### Vegetables\n- Elavan (Ash gourd)\n- Drumstick\n- Ladies Finger\n- Chaebu (Colocasia)\n- Pumpkin\n- Tomato\n- Brinjal\n- Avarrakai (Broad beans)\n- Sweet Potato\n- Potato\n- Onion\n- Capsicum\n\n### Masala\n- Coconut grated `1 cup`\n- Chana Daal `1 tbsp`\n- Red Chilli `4-5 nos`\n- Coriander seeds `1 tsp`\n- Fenugreek seeds `1/4 tsp`\n- Asafoetida `1/4 tsp`\n- Oil `1/2 tsp`\n\n### Porichukotta / Tadka\n- Mustard\t`1 tsp`\n- Curry leaves\n- Oil `1 tbsp`\n- Coriander leaves\n\n---\n## Instructions\n1. Boil tur dal with turmeric in a cooker (3 whistles). Add soaked tamarind in a separate bowl along with it.\n2. Boil vegetables with turmeric powder.\n   1. Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\n   2. Chaebu, Elavan, Drumstick - Can boil along with dal.\n   3. Onions - Roast in little oil.\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\n4. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients. Add coconut and grind to paste in mixer.\n5. Add the paste to the boiling vegetables and lightly boil for 2 mins.\n6. Tadka - Add mustard to oil, and once it crackles, add curry leaves. Pour over kootaan.\n7. Garnish with coriander leaves.\n"
 - file: test-recipe-1.md
   name: Test Recipe 1
   category: Palahaaram
@@ -216,5 +216,46 @@
     - savoury
     - gokulashtami
     - festival
-  recipeMd: "# Uppu Chigadai (Cheedai)\r\n\r\n---\r\n## Ingredients\r\n- Dosa rice [3 cups]\r\n\r\n---\r\n## Instructions\r\n\r\n### Prepare rice powder\r\n> Can be kept for up to a month\r\n- Soak rice in water for 2-3 hours \r\n- Dry it till water is gone (on cloth)\r\n- Grind in mixer till fine\r\n- Sieve twice to make sure it's fine\r\n- Keep it for drying for 2-3 hours\r\n- Roast in wok, till dry (can use to put kolam)\r\n- Once cool, sieve again\r\n"
-  contentRaw: "---\r\ncategory: snacks\r\ntags: [savoury, gokulashtami, festival]\r\n---\r\n\r\n# Uppu Chigadai (Cheedai)\r\n\r\n---\r\n## Ingredients\r\n- Dosa rice [3 cups]\r\n\r\n---\r\n## Instructions\r\n\r\n### Prepare rice powder\r\n> Can be kept for up to a month\r\n- Soak rice in water for 2-3 hours \r\n- Dry it till water is gone (on cloth)\r\n- Grind in mixer till fine\r\n- Sieve twice to make sure it's fine\r\n- Keep it for drying for 2-3 hours\r\n- Roast in wok, till dry (can use to put kolam)\r\n- Once cool, sieve again\r\n"
+  recipeMd: |
+    # Uppu Chigadai (Cheedai)
+
+    ---
+    ## Ingredients
+    - Dosa rice [3 cups]
+
+    ---
+    ## Instructions
+
+    ### Prepare rice powder
+    > Can be kept for up to a month
+    - Soak rice in water for 2-3 hours 
+    - Dry it till water is gone (on cloth)
+    - Grind in mixer till fine
+    - Sieve twice to make sure it's fine
+    - Keep it for drying for 2-3 hours
+    - Roast in wok, till dry (can use to put kolam)
+    - Once cool, sieve again
+  contentRaw: |
+    ---
+    category: snacks
+    tags: [savoury, gokulashtami, festival]
+    ---
+
+    # Uppu Chigadai (Cheedai)
+
+    ---
+    ## Ingredients
+    - Dosa rice [3 cups]
+
+    ---
+    ## Instructions
+
+    ### Prepare rice powder
+    > Can be kept for up to a month
+    - Soak rice in water for 2-3 hours 
+    - Dry it till water is gone (on cloth)
+    - Grind in mixer till fine
+    - Sieve twice to make sure it's fine
+    - Keep it for drying for 2-3 hours
+    - Roast in wok, till dry (can use to put kolam)
+    - Once cool, sieve again

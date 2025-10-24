@@ -10,15 +10,16 @@ Banana stem
 ## Ingredients
 
 ### Main
-- Banana stem
+- Banana stem (finely chopped)
 - Tur dal
-- Urud dal
 - Turmeric
 - Dried Red Chilly
 - Coconut (grated)
 - Mustard
+- Urud dal
 - Oil
 - Salt
+- Curry leaves
 
 ---
 ## Instructions

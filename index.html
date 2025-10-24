@@ -41,11 +41,11 @@
 
 <body>
 <div id="root">
-  <a href="#">clear</a>
   <input type="search" id="filter-search" placeholder="Search...">
   <select id="filter-category">
     <option value="">-</option>
   </select>
+  <a href="#">clear</a>
   <div id="filter-tags">
     <!-- <label><input type="checkbox" value="tag-1">tag-1</label> -->
   </div>
@@ -76,7 +76,6 @@ window.onload = async function () {
   categories.forEach(cat => {
     $categorySelect.add(new Option(cat, cat))
   })
-
   tags.forEach(tag => {
     const tagId = `tag_${tag.replaceAll('-', '_')}`
     const checkbox = document.createElement('input');
@@ -93,9 +92,17 @@ window.onload = async function () {
     $tagsContainer.appendChild(label);
   });
 
-  [$searchInput, $categorySelect, ...$tagCheckboxes].forEach(el =>
+  [$categorySelect, ...$tagCheckboxes].forEach(el =>
     el.addEventListener('input', updateUrlFiltersParams)
   );
+  // when search is empty (useful for when search is cleared)
+  $searchInput.addEventListener('input', () => {
+    if ($searchInput.value === '') updateUrlFiltersParams()
+  })
+  // when enter pressed in search box (to prevent too many updates while typing)
+  $searchInput.addEventListener('keydown', () => {
+    if (event.key === 'Enter') updateUrlFiltersParams()
+  })
   function updateUrlFiltersParams() {
     const q = $searchInput.value.toLowerCase();
     const category = $categorySelect.value;

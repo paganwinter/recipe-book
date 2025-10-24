@@ -14,7 +14,7 @@ window.onload = async function () {
   const currentUrl = window.location.href
   const parts = new URL(currentUrl)
   console.log(parts)
-  const correctUrl = `https://paganwinter.github.io/recipe-book/#${parts.pathname.replace(/^\/recipe-book/)}`
+  const correctUrl = `https://paganwinter.github.io/recipe-book/#${parts.pathname.replace(/^\/recipe-book/, '')}`
   console.log(correctUrl)
   window.location.href = correctUrl
   // window.location.replace(correctUrl)

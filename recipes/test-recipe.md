@@ -5,14 +5,16 @@ cook-time: 1h 30m
 serves: 3
 ---
 
-# Recipe Template
-What is this dish
+# Test Recipe
+Sample recipe to test new features
 
 ---
 ## Ingredients
 
 ### Main
 - Coconut (grated) `1 cup`
+- Salt `to taste`
+- Curry leaves
 
 ### Garnish
 - Coriander leaves `4 nos`

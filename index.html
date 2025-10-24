@@ -41,6 +41,7 @@
 
 <body>
 <div id="root">
+  <a href="#">clear</a>
   <input type="search" id="filter-search" placeholder="Search...">
   <select id="filter-category">
     <option value="">-</option>
@@ -48,7 +49,9 @@
   <div id="filter-tags">
     <!-- <label><input type="checkbox" value="tag-1">tag-1</label> -->
   </div>
+  <div id="main"></div>
   <div id="recipes-list"></div>
+  <div id="recipe-details"></div>
 </div>
 
 
@@ -58,17 +61,17 @@ window.onload = async function () {
   const $categorySelect = document.getElementById('filter-category')
   const $tagsContainer = document.getElementById('filter-tags')
   const $tagCheckboxes = []
-  const $recipesList = document.getElementById('recipes-list')
+  // const $recipesList = document.getElementById('recipes-list')
+  // const $recipeDetails = document.getElementById('recipe-details')
+  const $mainContainer = document.getElementById('main')
 
   const recipes = await fetch('recipes.json').then((res) => res.json())
   console.log('recipes:', recipes)
-  renderRecipes(recipes)
-
   const categories = [...new Set(recipes.map(rec => rec.category))]
   console.log('categories:', categories)
-
   const tags = [...new Set(recipes.flatMap(rec => rec.tags))]
   console.log('tags:', tags)
+
 
   categories.forEach(cat => {
     $categorySelect.add(new Option(cat, cat))
@@ -91,37 +94,101 @@ window.onload = async function () {
   });
 
   [$searchInput, $categorySelect, ...$tagCheckboxes].forEach(el =>
-    el.addEventListener('input', filterRecipes)
+    el.addEventListener('input', updateUrlFiltersParams)
   );
+  function updateUrlFiltersParams() {
+    const q = $searchInput.value.toLowerCase();
+    const category = $categorySelect.value;
+    const tags = Array.from($tagCheckboxes)
+      .filter(c => c.checked)
+      .map(c => c.value);
+    console.log({q, category, tags})
+
+    const filterQueryString = new URLSearchParams()
+    if (q) filterQueryString.append('q', q)
+    if (category) filterQueryString.append('category', category)
+    if (tags.length) filterQueryString.append('tags', tags.join(','))
+    console.log(filterQueryString)
+    window.location.hash = `#/?${filterQueryString}`
+  }
+
+
+  window.addEventListener('hashchange', handleHashChange);
+  handleHashChange();
+  function handleHashChange() {
+    // parse hash url
+    const hash = window.location.hash.replace(/^#/, '');
+    const urlParts = new URL(hash, 'https://example.com')
+    // console.log('route:', urlParts)
+    console.log('route:', urlParts.pathname + urlParts.search)
+
+    if (urlParts.pathname === '/') {
+      // set filter params from url
+      $searchInput.value = urlParts.searchParams.get('q') ?? ''
+      $categorySelect.value = urlParts.searchParams.get('category') ?? ''
+      const queryTags = (urlParts.searchParams.get('tags') ?? '').split(',')
+      $tagCheckboxes.forEach(tagCheckbox => {
+        tagCheckbox.checked = queryTags.includes(tagCheckbox.value)
+      })
+      filterRecipes()
+    } else if (urlParts.pathname.match(/^\/recipes\/(.+)$/)) {
+      const [, recipeId] = urlParts.pathname.match(/^\/recipes\/(.+)$/)
+      renderRecipe(recipeId)
+    } else {
+      $mainContainer.innerHTML = `
+        <div>Not Found</div>
+        <div>Try searching for ${hash}</div>
+      `
+    }
+  }
+
 
   function filterRecipes() {
     const q = $searchInput.value.toLowerCase();
-    const selectedCategory = $categorySelect.value;
-    const selectedTags = Array.from($tagCheckboxes)
+    const category = $categorySelect.value;
+    const tags = $tagCheckboxes
       .filter(c => c.checked)
       .map(c => c.value);
-    console.log(q, selectedCategory, selectedTags)
+    console.log('filter:', {q, category, tags})
 
     const filtered = recipes.filter(rec => {
       if (q && !rec.rawContent.toLowerCase().includes(q)) return false
-      if (selectedCategory && rec.category !== selectedCategory) return false
-      if (selectedTags.length > 0 && !selectedTags.every(t => rec.tags.includes(t))) return false
+      if (category && rec.category !== category) return false
+      if (tags.length > 0 && !tags.every(t => rec.tags.includes(t))) return false
       return true
     });
     console.log('filtered:', filtered)
     renderRecipes(filtered)
   }
-
   function renderRecipes(recipes) {
-    $recipesList.innerHTML = recipes.map(rec => {
+    // $recipeDetails.style.display = 'none'
+    // $recipesList.style.display = 'block'
+    $mainContainer.innerHTML = recipes.map(rec => {
+      const recipeId = rec.file.replace(/\.md$/, '')
       return `
         <div class="recipe-summary">
-          <h4><a href="recipes/${rec.file.replace(/\.md$/, '')}">${rec.name}</a></h4>
+          <h4><a href="#/recipes/${recipeId}">${rec.name}</a></h4>
           <span class="category">${rec.category}</span>
           <span>${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
         </div>
       `
     }).join('')
+  }
+  async function renderRecipe(recipeId) {
+    const rec = recipes.find(rec => rec.file.replace(/\.md$/, '') === recipeId)
+    if (!rec) {
+      // TODO
+      return
+    }
+
+    // $recipesList.style.display = 'none'
+    // $recipeDetails.style.display = 'block'
+    $mainContainer.innerHTML = `
+      <h4>${rec.name}</h4>
+      <span class="category">${rec.category}</span>
+      <span>${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
+      <pre>${rec.rawContent}</pre>
+    `
   }
 }
 </script>

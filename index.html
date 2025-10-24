@@ -153,8 +153,10 @@ window.onload = async function () {
       .map(c => c.value);
     console.log('filter:', {q, category, tags})
 
+    const searchTokens = q.match(/"([^"]*)"|'([^']*)'|(\S+)/g).map(tok => tok.replaceAll('"', '').replaceAll('\'', ''))
     const filtered = recipes.filter(rec => {
-      if (q && !rec.rawContent.toLowerCase().includes(q)) return false
+      // if (q && !rec.rawContent.toLowerCase().includes(q)) return false
+      if (searchTokens.length && !searchTokens.every(tok => rec.rawContent.toLowerCase().includes(tok))) return false
       if (category && rec.category !== category) return false
       if (tags.length > 0 && !tags.every(t => rec.tags.includes(t))) return false
       return true

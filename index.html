@@ -83,7 +83,7 @@ window.onload = async function () {
     checkbox.id = tagId; // Unique ID for each checkbox
     checkbox.name = 'tags'; // Common name for grouping
     checkbox.value = tag;
-    $tagCheckboxes.push(checkbox)
+    $tagCheckboxes.push(checkbox);
 
     const label = document.createElement('label');
     label.appendChild(checkbox);
@@ -92,9 +92,7 @@ window.onload = async function () {
     $tagsContainer.appendChild(label);
   });
 
-  [$categorySelect, ...$tagCheckboxes].forEach(el =>
-    el.addEventListener('input', updateUrlFiltersParams)
-  );
+  [$categorySelect, ...$tagCheckboxes].forEach(el => el.addEventListener('input', updateUrlFiltersParams));
   // when search is empty (useful for when search is cleared)
   $searchInput.addEventListener('input', () => {
     if ($searchInput.value === '') updateUrlFiltersParams()
@@ -109,13 +107,13 @@ window.onload = async function () {
     const tags = Array.from($tagCheckboxes)
       .filter(c => c.checked)
       .map(c => c.value);
-    console.log({q, category, tags})
+    console.log('update url filter to :', {q, category, tags})
 
     const filterQueryString = new URLSearchParams()
     if (q) filterQueryString.append('q', q)
     if (category) filterQueryString.append('category', category)
     if (tags.length) filterQueryString.append('tags', tags.join(','))
-    console.log(filterQueryString)
+    console.log('filterQueryString:', filterQueryString)
     window.location.hash = `#/?${filterQueryString}`
   }
 
@@ -142,10 +140,7 @@ window.onload = async function () {
       const [, recipeId] = urlParts.pathname.match(/^\/recipes\/(.+)$/)
       renderRecipe(recipeId)
     } else {
-      $mainContainer.innerHTML = `
-        <div>Not Found</div>
-        <div>Try searching for ${hash}</div>
-      `
+      renderNotFound()
     }
   }
 
@@ -184,10 +179,12 @@ window.onload = async function () {
   async function renderRecipe(recipeId) {
     const rec = recipes.find(rec => rec.file.replace(/\.md$/, '') === recipeId)
     if (!rec) {
-      // TODO
+      console.log(`recipe ${recipeId} not found`)
+      renderNotFound()
       return
     }
 
+    console.log('displaying recipe', rec)
     // $recipesList.style.display = 'none'
     // $recipeDetails.style.display = 'block'
     $mainContainer.innerHTML = `
@@ -195,6 +192,12 @@ window.onload = async function () {
       <span class="category">${rec.category}</span>
       <span>${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
       <pre>${rec.rawContent}</pre>
+    `
+  }
+  function renderNotFound() {
+    $mainContainer.innerHTML = `
+      <div>Not Found</div>
+      <div>Try searching for ${window.location.hash.replace(/^#/, '')}</div>
     `
   }
 }

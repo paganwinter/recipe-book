@@ -1,18 +1,12 @@
 ---
-category: kootan
+category: Kootan
 tags: [savoury, onam]
 ---
 
-# Dish name three
-What is this dish about
-
-- Category: kootan
-- Tags: savoury, onam
-- Cooking Time: 2 hours
-- Serves: 3
+# Test recipe 2
+Made for Onam
 
 ---
-
 ## Ingredients
 
 ### Paste
@@ -27,7 +21,6 @@ What is this dish about
 - curry leaves `4 no`
 
 ---
-
 ## Directions
 
 ### Paste
@@ -37,8 +30,3 @@ What is this dish about
 
 ### Garnish
 1. Garnish with currey leaves and coriander
-
----
-
-## Notes
-> some notes about the dish here

@@ -1,18 +1,14 @@
 ---
-category: palahaaram
+category: Palahaaram
 tags: [sweet, breakfast]
+cook-time: 1h30m
+servers: 3
 ---
 
-# Dish Two name
+# Test Recipe 1
 What is this dish about
 
-- Category: kootan
-- Tags: savoury, daily
-- Cooking Time: 2 hours
-- Serves: 3
-
 ---
-
 ## Ingredients
 
 ### Paste
@@ -20,15 +16,12 @@ What is this dish about
 - Sugar `to taste`
 
 ---
-
 ## Directions
 
 ### Paste
 1. Make sweet.
 2. Add water to adjust consistency if needed.
 
-
 ---
-
 ## Notes
 > some notes about the dish here

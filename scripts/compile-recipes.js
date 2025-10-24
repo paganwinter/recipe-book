@@ -95,7 +95,7 @@ async function main() {
       name,
       ...metadata,
       recipeMd,
-      rawContent: content,
+      contentRaw: content,
     }
   })
 

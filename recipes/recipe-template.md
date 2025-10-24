@@ -1,18 +1,14 @@
 ---
 category: kootan
 tags: [savoury, daily]
+cook-time: 1h 30m
+serves: 3
 ---
 
 # Dish name
 What is this dish about
 
-- Category: kootan
-- Tags: savoury, daily
-- Cooking Time: 2 hours
-- Serves: 3
-
 ---
-
 ## Ingredients
 
 ### Paste
@@ -24,11 +20,10 @@ What is this dish about
 - Salt: to taste
 
 ### Garnish
-- curry leaves `4 no`
+- curry leaves `4 nos`
 
 ---
-
-## Directions
+## Instructions
 
 ### Paste
 1. Soak tamarind in warm water for 10 minutes, then extract the juice.
@@ -39,6 +34,5 @@ What is this dish about
 1. Garnish with currey leaves and coriander
 
 ---
-
 ## Notes
 > some notes about the dish here

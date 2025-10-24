@@ -4,8 +4,33 @@
 <meta charset="UTF-8" />
 <title>Recipes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/marked@16.4.1/lib/marked.umd.min.js"></script> -->
+<script src="js/marked-16.4.1-marked.umd.min.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,400i,700,700i,900" rel="stylesheet">
+
 <style>
-:root { font-family: sans-serif; }
+:root {
+  font-family: 'Fira Sans', sans-serif;
+}
+body {
+  background: #f8f8f8;
+}
+a {
+  color: #06c;
+}
+
+.recipe h2 {
+  text-transform: uppercase;
+}
+.recipe code {
+  font-size: 14px;
+  background: #e8e8e8;
+  border-radius: 3px;
+  padding: 0px 5px;
+  margin: 0 5px;
+}
 
 .category {
   padding: 5px;
@@ -36,6 +61,12 @@
   background: #444;
   color: #fff;
 }
+
+#filter-search {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
 </style>
 </head>
 
@@ -57,6 +88,7 @@
 
 <script>
 window.onload = async function () {
+  console.log(window)
   const $searchInput = document.getElementById('filter-search')
   const $categorySelect = document.getElementById('filter-category')
   const $tagsContainer = document.getElementById('filter-tags')
@@ -153,10 +185,12 @@ window.onload = async function () {
       .map(c => c.value);
     console.log('filter:', {q, category, tags})
 
-    const searchTokens = q.match(/"([^"]*)"|'([^']*)'|(\S+)/g).map(tok => tok.replaceAll('"', '').replaceAll('\'', ''))
+    const searchTokens = q
+      ? q.match(/"([^"]*)"|'([^']*)'|(\S+)/g).map(tok => tok.replaceAll('"', '').replaceAll('\'', ''))
+      : []
     const filtered = recipes.filter(rec => {
-      // if (q && !rec.rawContent.toLowerCase().includes(q)) return false
-      if (searchTokens.length && !searchTokens.every(tok => rec.rawContent.toLowerCase().includes(tok))) return false
+      // if (q && !rec.contentRaw.toLowerCase().includes(q)) return false
+      if (searchTokens.length && !searchTokens.every(tok => rec.contentRaw.toLowerCase().includes(tok))) return false
       if (category && rec.category !== category) return false
       if (tags.length > 0 && !tags.every(t => rec.tags.includes(t))) return false
       return true
@@ -179,6 +213,13 @@ window.onload = async function () {
     }).join('')
   }
   async function renderRecipe(recipeId) {
+    marked.use({
+      async: false,
+      pedantic: false,
+      gfm: true,
+      // 'marked-gfm-heading-id': true,
+    })
+
     const rec = recipes.find(rec => rec.file.replace(/\.md$/, '') === recipeId)
     if (!rec) {
       console.log(`recipe ${recipeId} not found`)
@@ -190,10 +231,14 @@ window.onload = async function () {
     // $recipesList.style.display = 'none'
     // $recipeDetails.style.display = 'block'
     $mainContainer.innerHTML = `
-      <h4>${rec.name}</h4>
+      <!-- <h4>${rec.name}</h4> -->
       <span class="category">${rec.category}</span>
       <span>${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
-      <pre>${rec.rawContent}</pre>
+      <div class="recipe">${marked.parse(rec.recipeMd)}</div>
+      <details>
+        <summary>raw</summary>
+        <pre>${rec.contentRaw}</pre>
+      </details>
     `
   }
   function renderNotFound() {

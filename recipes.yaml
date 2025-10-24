@@ -1,3 +1,122 @@
+- file: potato-podimaas.md
+  name: Potato Podimaas
+  category: Upperi
+  tags:
+    - savoury
+    - sides
+  recipeMd: >
+    # Potato Podimaas
+
+    Mashed potatoes
+
+
+    ---
+
+    ## Ingredients
+
+
+    ### Main
+
+    - Potato
+
+
+    ### Tadka
+
+    - Oil
+
+    - Mustard
+
+    - Urud dal
+
+    - Curry leaves
+
+    - Chillies (green or dried red)
+
+    - Asafoetida
+
+
+    ### Garnish
+
+    - Coriander leaves
+
+    - Grated coconut
+
+
+    ---
+
+    ## Directions
+
+    1. Cut potatoes into 2-4 pieces. Boil with water, salt, and turmeric in a
+    cooker for at least 3 whistles.
+
+    2. Peel and mash the potatoes.
+
+    3. Roast mustard in oil, and when it sputters, and the rest of the
+    ingredients for tadka.
+
+    4. Mix the potatoes and cook for some time. Cook longer in low flame for
+    crispy potatoes.
+  contentRaw: >
+    ---
+
+    category: Upperi
+
+    tags: [savoury, sides]
+
+    ---
+
+
+    # Potato Podimaas
+
+    Mashed potatoes
+
+
+    ---
+
+    ## Ingredients
+
+
+    ### Main
+
+    - Potato
+
+
+    ### Tadka
+
+    - Oil
+
+    - Mustard
+
+    - Urud dal
+
+    - Curry leaves
+
+    - Chillies (green or dried red)
+
+    - Asafoetida
+
+
+    ### Garnish
+
+    - Coriander leaves
+
+    - Grated coconut
+
+
+    ---
+
+    ## Directions
+
+    1. Cut potatoes into 2-4 pieces. Boil with water, salt, and turmeric in a
+    cooker for at least 3 whistles.
+
+    2. Peel and mash the potatoes.
+
+    3. Roast mustard in oil, and when it sputters, and the rest of the
+    ingredients for tadka.
+
+    4. Mix the potatoes and cook for some time. Cook longer in low flame for
+    crispy potatoes.
 - file: pulikyachal.md
   name: Pulikyachal
   category: Pickle
@@ -169,63 +288,6 @@
     - daily
   recipeMd: "# Sambar\n\n---\n## Ingredients\n### Main\n- Tamarind `1 tbsp`\n- Tur dal `1 cup`\n- Salt\n- Turmeric\n\n### Vegetables\n- Elavan (Ash gourd)\n- Drumstick\n- Ladies Finger\n- Chaebu (Colocasia)\n- Pumpkin (yellow)\n- Tomato\n- Brinjal\n- Avarrakai (Broad beans)\n- Sweet Potato\n- Potato\n- Onion\n- Capsicum\n\n### Masala\n- Coconut grated `1 cup`\n- Chana dal `1 tbsp`\n- Red Chilli `4-5 nos`\n- Coriander seeds `1 tsp`\n- Fenugreek seeds `1/4 tsp`\n- Asafoetida `1/4 tsp`\n- Vegetable oil `1/2 tsp`\n\n### Porichukotta / Tadka\n- Mustard\t`1 tsp`\n- Curry leaves\n- Oil `1 tbsp`\n\n### Garnish\n- Coriander leaves\n\n---\n## Instructions\n### Main\n1. Boil tur dal with turmeric in a cooker (3 whistles or more). Add soaked tamarind in a separate bowl along with it.\n2. Boil vegetables with turmeric powder.\n   - Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\n   - Chaebu, Elavan, Drumstick - Can boil along with dal.\n   - Onions - Roast in little oil.\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\n\n### Masala\n1. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients.\n2. Add coconut and grind to paste in mixer.\n3. Add the paste to the boiling vegetables and lightly boil for 2 mins.\n\n### Tadka\n1. Add mustard to oil, and once it crackles, add curry leaves.\n2. Pour over kootaan.\n3. Garnish with coriander leaves.\n"
   contentRaw: "---\ncategory: Kootan\ntags: [savoury, daily]\n---\n\n# Sambar\n\n---\n## Ingredients\n### Main\n- Tamarind `1 tbsp`\n- Tur dal `1 cup`\n- Salt\n- Turmeric\n\n### Vegetables\n- Elavan (Ash gourd)\n- Drumstick\n- Ladies Finger\n- Chaebu (Colocasia)\n- Pumpkin (yellow)\n- Tomato\n- Brinjal\n- Avarrakai (Broad beans)\n- Sweet Potato\n- Potato\n- Onion\n- Capsicum\n\n### Masala\n- Coconut grated `1 cup`\n- Chana dal `1 tbsp`\n- Red Chilli `4-5 nos`\n- Coriander seeds `1 tsp`\n- Fenugreek seeds `1/4 tsp`\n- Asafoetida `1/4 tsp`\n- Vegetable oil `1/2 tsp`\n\n### Porichukotta / Tadka\n- Mustard\t`1 tsp`\n- Curry leaves\n- Oil `1 tbsp`\n\n### Garnish\n- Coriander leaves\n\n---\n## Instructions\n### Main\n1. Boil tur dal with turmeric in a cooker (3 whistles or more). Add soaked tamarind in a separate bowl along with it.\n2. Boil vegetables with turmeric powder.\n   - Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\n   - Chaebu, Elavan, Drumstick - Can boil along with dal.\n   - Onions - Roast in little oil.\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\n\n### Masala\n1. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients.\n2. Add coconut and grind to paste in mixer.\n3. Add the paste to the boiling vegetables and lightly boil for 2 mins.\n\n### Tadka\n1. Add mustard to oil, and once it crackles, add curry leaves.\n2. Pour over kootaan.\n3. Garnish with coriander leaves.\n"
-- file: test-recipe-1.md
-  name: Test Recipe 1
-  category: Palahaaram
-  tags:
-    - sweet
-    - breakfast
-  cook-time: 1h30m
-  servers: 3
-  recipeMd: |
-    # Test Recipe 1
-    What is this dish about
-
-    ---
-    ## Ingredients
-
-    ### Paste
-    - Coconut (grated) `1 cup`
-    - Sugar `to taste`
-
-    ---
-    ## Directions
-
-    ### Paste
-    1. Make sweet.
-    2. Add water to adjust consistency if needed.
-
-    ---
-    ## Notes
-    > some notes about the dish here
-  contentRaw: |
-    ---
-    category: Palahaaram
-    tags: [sweet, breakfast]
-    cook-time: 1h30m
-    servers: 3
-    ---
-
-    # Test Recipe 1
-    What is this dish about
-
-    ---
-    ## Ingredients
-
-    ### Paste
-    - Coconut (grated) `1 cup`
-    - Sugar `to taste`
-
-    ---
-    ## Directions
-
-    ### Paste
-    1. Make sweet.
-    2. Add water to adjust consistency if needed.
-
-    ---
-    ## Notes
-    > some notes about the dish here
 - file: uppu-chigadai.md
   name: Uppu Chigadai (Cheedai)
   category: snacks

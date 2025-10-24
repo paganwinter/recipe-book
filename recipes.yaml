@@ -17,9 +17,7 @@
 
     ### Main
 
-    - Pumpkin
-
-    - Tur dal
+    - Pumpkin (green)
 
     - Turmeric
 
@@ -27,11 +25,13 @@
 
     - Coconut (grated)
 
-    - Cumin (Jeera)
+    - Cumin (jeera)
 
     - Mustard
 
     - Urud dal
+
+    - Moong dal (if short on vegetables)
 
     - Curry Leaves
 
@@ -47,8 +47,8 @@
 
     ### Main
 
-    1. Boil Pumpkin (green skin), turmeric, chilly powder, salt, and water in a
-    vessel till pumpkin is soft. Add water as required.
+    1. Boil Pumpkin (and moong dal if needed), turmeric, chilly powder, salt,
+    and water in a vessel till pumpkin is soft. Add water as required.
 
     2. Grind grated coconut and jeera to a paste and add to the boiling mixture;
     cook for 2 minutes.
@@ -78,9 +78,7 @@
 
     ### Main
 
-    - Pumpkin
-
-    - Tur dal
+    - Pumpkin (green)
 
     - Turmeric
 
@@ -88,11 +86,13 @@
 
     - Coconut (grated)
 
-    - Cumin (Jeera)
+    - Cumin (jeera)
 
     - Mustard
 
     - Urud dal
+
+    - Moong dal (if short on vegetables)
 
     - Curry Leaves
 
@@ -108,8 +108,8 @@
 
     ### Main
 
-    1. Boil Pumpkin (green skin), turmeric, chilly powder, salt, and water in a
-    vessel till pumpkin is soft. Add water as required.
+    1. Boil Pumpkin (and moong dal if needed), turmeric, chilly powder, salt,
+    and water in a vessel till pumpkin is soft. Add water as required.
 
     2. Grind grated coconut and jeera to a paste and add to the boiling mixture;
     cook for 2 minutes.
@@ -251,11 +251,9 @@
 
     ### Main
 
-    - Banana stem
+    - Banana stem (finely chopped)
 
     - Tur dal
-
-    - Urud dal
 
     - Turmeric
 
@@ -265,9 +263,13 @@
 
     - Mustard
 
+    - Urud dal
+
     - Oil
 
     - Salt
+
+    - Curry leaves
 
 
     ---
@@ -312,11 +314,9 @@
 
     ### Main
 
-    - Banana stem
+    - Banana stem (finely chopped)
 
     - Tur dal
-
-    - Urud dal
 
     - Turmeric
 
@@ -326,9 +326,13 @@
 
     - Mustard
 
+    - Urud dal
+
     - Oil
 
     - Salt
+
+    - Curry leaves
 
 
     ---
@@ -496,6 +500,8 @@
 
     - Jaggery
 
+    - Coconut (small pieces)
+
 
     ---
 
@@ -507,9 +513,11 @@
 
     2. Add chakka varatti and jaggery and grind some more, till mixed
 
-    3. Cook the batter on low flame till it reaches consistency of sevai dough
+    3. Add coconut pieces
 
-    4. Once cool to the touch, wrap small quantities of the dough in banana leaf
+    4. Cook the batter on low flame till it reaches consistency of sevai dough
+
+    5. Once cool to the touch, wrap small quantities of the dough in banana leaf
     and steam for 20 minutes on low flame (or in a cooker for 2 whistles)
   contentRaw: >
     ---
@@ -536,6 +544,8 @@
 
     - Jaggery
 
+    - Coconut (small pieces)
+
 
     ---
 
@@ -547,9 +557,11 @@
 
     2. Add chakka varatti and jaggery and grind some more, till mixed
 
-    3. Cook the batter on low flame till it reaches consistency of sevai dough
+    3. Add coconut pieces
 
-    4. Once cool to the touch, wrap small quantities of the dough in banana leaf
+    4. Cook the batter on low flame till it reaches consistency of sevai dough
+
+    5. Once cool to the touch, wrap small quantities of the dough in banana leaf
     and steam for 20 minutes on low flame (or in a cooker for 2 whistles)
 - file: potato-podimaas.md
   name: Potato Podimaas
@@ -754,8 +766,16 @@
     7. Add asafoetida, turmeric, salt, and jaggery
     8. Heat till it thickens
     9. Add mix (urud dal, dry chilly, sesame) and ginger
-- file: recipe-template.md
-  name: Recipe Template
+- file: sambar.md
+  name: Sambar
+  category: Kootan
+  tags:
+    - savoury
+    - daily
+  recipeMd: "# Sambar\n\n---\n## Ingredients\n### Main\n- Tamarind `1 tbsp`\n- Tur dal `1 cup`\n- Salt\n- Turmeric\n\n### Vegetables\n- Elavan (Ash gourd)\n- Drumstick\n- Ladies Finger\n- Chaebu (Colocasia)\n- Pumpkin (yellow)\n- Tomato\n- Brinjal\n- Avarrakai (Broad beans)\n- Sweet Potato\n- Potato\n- Onion\n- Capsicum\n\n### Masala\n- Coconut grated `1 cup`\n- Chana dal `1 tbsp`\n- Red Chilli `4-5 nos`\n- Coriander seeds `1 tsp`\n- Fenugreek seeds `1/4 tsp`\n- Asafoetida `1/4 tsp`\n- Vegetable oil `1/2 tsp`\n\n### Porichukotta / Tadka\n- Mustard\t`1 tsp`\n- Curry leaves\n- Oil `1 tbsp`\n\n### Garnish\n- Coriander leaves\n\n---\n## Instructions\n### Main\n1. Boil tur dal with turmeric in a cooker (3 whistles or more). Add soaked tamarind in a separate bowl along with it.\n2. Boil vegetables with turmeric powder.\n   - Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\n   - Chaebu, Elavan, Drumstick - Can boil along with dal.\n   - Onions - Roast in little oil.\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\n\n### Masala\n1. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients.\n2. Add coconut and grind to paste in mixer.\n3. Add the paste to the boiling vegetables and lightly boil for 2 mins.\n\n### Tadka\n1. Add mustard to oil, and once it crackles, add curry leaves.\n2. Pour over kootaan.\n3. Garnish with coriander leaves.\n"
+  contentRaw: "---\ncategory: Kootan\ntags: [savoury, daily]\n---\n\n# Sambar\n\n---\n## Ingredients\n### Main\n- Tamarind `1 tbsp`\n- Tur dal `1 cup`\n- Salt\n- Turmeric\n\n### Vegetables\n- Elavan (Ash gourd)\n- Drumstick\n- Ladies Finger\n- Chaebu (Colocasia)\n- Pumpkin (yellow)\n- Tomato\n- Brinjal\n- Avarrakai (Broad beans)\n- Sweet Potato\n- Potato\n- Onion\n- Capsicum\n\n### Masala\n- Coconut grated `1 cup`\n- Chana dal `1 tbsp`\n- Red Chilli `4-5 nos`\n- Coriander seeds `1 tsp`\n- Fenugreek seeds `1/4 tsp`\n- Asafoetida `1/4 tsp`\n- Vegetable oil `1/2 tsp`\n\n### Porichukotta / Tadka\n- Mustard\t`1 tsp`\n- Curry leaves\n- Oil `1 tbsp`\n\n### Garnish\n- Coriander leaves\n\n---\n## Instructions\n### Main\n1. Boil tur dal with turmeric in a cooker (3 whistles or more). Add soaked tamarind in a separate bowl along with it.\n2. Boil vegetables with turmeric powder.\n   - Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\n   - Chaebu, Elavan, Drumstick - Can boil along with dal.\n   - Onions - Roast in little oil.\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\n\n### Masala\n1. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients.\n2. Add coconut and grind to paste in mixer.\n3. Add the paste to the boiling vegetables and lightly boil for 2 mins.\n\n### Tadka\n1. Add mustard to oil, and once it crackles, add curry leaves.\n2. Pour over kootaan.\n3. Garnish with coriander leaves.\n"
+- file: sample.md
+  name: Sample
   category: Kootan
   tags:
     - savoury
@@ -763,14 +783,61 @@
   cook-time: 1h 30m
   serves: 3
   recipeMd: |
-    # Recipe Template
-    What is this dish
+    # Sample
+    Description
 
     ---
     ## Ingredients
 
     ### Main
     - Coconut (grated) `1 cup`
+
+    ---
+    ## Instructions
+
+    ### Main
+    1. 
+  contentRaw: |
+    ---
+    category: Kootan
+    tags: [savoury, daily]
+    cook-time: 1h 30m
+    serves: 3
+    ---
+
+    # Sample
+    Description
+
+    ---
+    ## Ingredients
+
+    ### Main
+    - Coconut (grated) `1 cup`
+
+    ---
+    ## Instructions
+
+    ### Main
+    1. 
+- file: test-recipe.md
+  name: Test Recipe
+  category: Kootan
+  tags:
+    - savoury
+    - daily
+  cook-time: 1h 30m
+  serves: 3
+  recipeMd: |
+    # Test Recipe
+    Sample recipe to test new features
+
+    ---
+    ## Ingredients
+
+    ### Main
+    - Coconut (grated) `1 cup`
+    - Salt `to taste`
+    - Curry leaves
 
     ### Garnish
     - Coriander leaves `4 nos`
@@ -797,14 +864,16 @@
     serves: 3
     ---
 
-    # Recipe Template
-    What is this dish
+    # Test Recipe
+    Sample recipe to test new features
 
     ---
     ## Ingredients
 
     ### Main
     - Coconut (grated) `1 cup`
+    - Salt `to taste`
+    - Curry leaves
 
     ### Garnish
     - Coriander leaves `4 nos`
@@ -823,14 +892,6 @@
     ---
     ## Notes
     > some notes about the dish here
-- file: sambar.md
-  name: Sambar
-  category: Kootan
-  tags:
-    - savoury
-    - daily
-  recipeMd: "# Sambar\n\n---\n## Ingredients\n### Main\n- Tamarind `1 tbsp`\n- Tur dal `1 cup`\n- Salt\n- Turmeric\n\n### Vegetables\n- Elavan (Ash gourd)\n- Drumstick\n- Ladies Finger\n- Chaebu (Colocasia)\n- Pumpkin (yellow)\n- Tomato\n- Brinjal\n- Avarrakai (Broad beans)\n- Sweet Potato\n- Potato\n- Onion\n- Capsicum\n\n### Masala\n- Coconut grated `1 cup`\n- Chana dal `1 tbsp`\n- Red Chilli `4-5 nos`\n- Coriander seeds `1 tsp`\n- Fenugreek seeds `1/4 tsp`\n- Asafoetida `1/4 tsp`\n- Vegetable oil `1/2 tsp`\n\n### Porichukotta / Tadka\n- Mustard\t`1 tsp`\n- Curry leaves\n- Oil `1 tbsp`\n\n### Garnish\n- Coriander leaves\n\n---\n## Instructions\n### Main\n1. Boil tur dal with turmeric in a cooker (3 whistles or more). Add soaked tamarind in a separate bowl along with it.\n2. Boil vegetables with turmeric powder.\n   - Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\n   - Chaebu, Elavan, Drumstick - Can boil along with dal.\n   - Onions - Roast in little oil.\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\n\n### Masala\n1. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients.\n2. Add coconut and grind to paste in mixer.\n3. Add the paste to the boiling vegetables and lightly boil for 2 mins.\n\n### Tadka\n1. Add mustard to oil, and once it crackles, add curry leaves.\n2. Pour over kootaan.\n3. Garnish with coriander leaves.\n"
-  contentRaw: "---\ncategory: Kootan\ntags: [savoury, daily]\n---\n\n# Sambar\n\n---\n## Ingredients\n### Main\n- Tamarind `1 tbsp`\n- Tur dal `1 cup`\n- Salt\n- Turmeric\n\n### Vegetables\n- Elavan (Ash gourd)\n- Drumstick\n- Ladies Finger\n- Chaebu (Colocasia)\n- Pumpkin (yellow)\n- Tomato\n- Brinjal\n- Avarrakai (Broad beans)\n- Sweet Potato\n- Potato\n- Onion\n- Capsicum\n\n### Masala\n- Coconut grated `1 cup`\n- Chana dal `1 tbsp`\n- Red Chilli `4-5 nos`\n- Coriander seeds `1 tsp`\n- Fenugreek seeds `1/4 tsp`\n- Asafoetida `1/4 tsp`\n- Vegetable oil `1/2 tsp`\n\n### Porichukotta / Tadka\n- Mustard\t`1 tsp`\n- Curry leaves\n- Oil `1 tbsp`\n\n### Garnish\n- Coriander leaves\n\n---\n## Instructions\n### Main\n1. Boil tur dal with turmeric in a cooker (3 whistles or more). Add soaked tamarind in a separate bowl along with it.\n2. Boil vegetables with turmeric powder.\n   - Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.\n   - Chaebu, Elavan, Drumstick - Can boil along with dal.\n   - Onions - Roast in little oil.\n3. Add tamarind pulp, dal (lightly mashed), salt, turmeric, asafoetida, and water to vegetables and boil for 2 mins.\n\n### Masala\n1. Roast chana dal in 1/2 tsp oil; once slightly brown, add rest of the ingredients.\n2. Add coconut and grind to paste in mixer.\n3. Add the paste to the boiling vegetables and lightly boil for 2 mins.\n\n### Tadka\n1. Add mustard to oil, and once it crackles, add curry leaves.\n2. Pour over kootaan.\n3. Garnish with coriander leaves.\n"
 - file: uppu-chigadai.md
   name: Uppu Chigadai (Cheedai)
   category: snacks

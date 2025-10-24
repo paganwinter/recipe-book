@@ -1,0 +1,43 @@
+title: Dish name
+description: |
+  What is this dish about
+category: kootan
+tags: [savoury, daily]
+
+ingredients-1:
+- for: Paste
+  items:
+  - [coconut, 1 cup]
+  - [tamarid, some]
+- for: Garnish
+  items:
+  - [curry leaves, a few]
+
+ingredients-2:
+  Paste:
+  - [coconut, 1 cup]
+  - [tamarid, some]
+  Garnish:
+  - [curry leaves, a few]
+
+directions-1:
+- for: Paste
+  steps:
+  - Soak tamarind in warm water for 10 minutes, then extract the juice.
+  - Grind coconut with tamarind juice to make a smooth paste.
+  - Add water to adjust consistency if needed.
+- for: Garnish
+  steps:
+  - Garnish with curry leaves and coriander
+
+directions-2:
+  Paste:
+  - Soak tamarind in warm water for 10 minutes, then extract the juice.
+  - Grind coconut with tamarind juice to make a smooth paste.
+  - Add water to adjust consistency if needed.
+  Garnish:
+  - Garnish with curry leaves and coriander
+
+notes: |
+  - Adjust the sourness by varying the amount of tamarind.
+  - You can add vegetables like drumsticks or carrots for variation.

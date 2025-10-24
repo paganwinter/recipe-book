@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Recipes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
+<!-- <script src="https://unpkg.com/react@18.3.1/umd/react.development.js"></script> -->
+<!-- <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js"></script> -->
+<script src="js/babel-standalone-7.28.4-babel.min.js"></script>
+<script src="js/react-18.3.1-umd-react.development.js"></script>
+<script src="js/react-dom-18.3.1-umd-react-dom.development.js"></script>
+<style>
+:root { font-family: sans-serif; }
+
+.category {
+  padding: 5px;
+  margin: 5px;
+}
+.category.active {
+  background: #444;
+  color: #fff;
+}
+.category.active a {
+  background: #444;
+  color: #fff;
+}
+
+.tag {
+  padding: 5px;
+  margin: 5px;
+  background: #eee;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+.tag.active {
+  background: #444;
+  color: #fff;
+}
+.tag.active a {
+  background: #444;
+  color: #fff;
+}
+</style>
+</head>
+
+<body>
+<div id="root"></div>
+
+<script type="text/babel" data-type="module" data-presets="react">
+const { useEffect } = React
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+  componentDidCatch(error, info) {
+    this.setState({ hasError: true, error });
+    console.error(error);
+    console.error(info);
+  }
+  render() {
+    if (this.state.hasError) return <div>Something went wrong: <pre>{this.state.error.message} {this.state.error.stack}</pre></div>;
+    return this.props.children;
+  }
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <ErrorBoundary>
+      <App />
+    </ErrorBoundary>
+  </React.StrictMode>
+);
+
+
+
+// write your components here
+function App() {
+  const [recipes, setRecipes] = React.useState([]);
+  useEffect(() => {
+    async function fetchData() {
+      const rec = await fetch('recipes.json').then((res) => res.json())
+      setRecipes(rec);
+    }
+    fetchData()
+  }, [])
+  return (<>
+    <RecipesList recipes={recipes}/>
+  </>)
+}
+
+function RecipesList({ recipes: allRecipes }) {
+  const [filterSearch, setFilterSearch] = React.useState('')
+  const [filterCategory, setFilterCategory] = React.useState(null)
+  const [filterTags, setFilterTags] = React.useState([])
+
+  const categories = [...new Set(allRecipes.map(rec => rec.category))]
+  const tags = [...new Set(allRecipes.flatMap(rec => rec.tags))]
+
+  let filteredRecipes = [...allRecipes]
+
+  console.log({filterSearch, filterCategory, filterTags})
+  if (filterSearch) {
+    filteredRecipes = filteredRecipes.filter(rec => {
+      return JSON.stringify(rec).toLowerCase().includes(filterSearch)
+    })
+  }
+  if (filterCategory) {
+    filteredRecipes = filteredRecipes.filter(rec => {
+      return rec.category.toLowerCase() === filterCategory
+    })
+  }
+  console.log('filterTags:', filterTags)
+  if (filterTags.length) {
+    filteredRecipes = filteredRecipes.filter(rec => {
+      return filterTags.every(searchTag => rec.tags.some(recTag => recTag.toLowerCase() === searchTag))
+    })
+  }
+  console.log({filteredRecipes})
+
+  return <>
+    <h2>Recipes</h2>
+    <form>
+      <input type="text" placeholder="Search..." value={filterSearch} onChange={(e) => {
+        setFilterSearch(e.target.value.toLowerCase())
+        // setFilters((prevState) => {
+        //   return { ...prevState, search: e.target.value.toLowerCase() }
+        // })
+        // filterRecipes()
+      }}/>
+    </form>
+
+    <div>
+      Categories:
+      <span>
+        <span key="all" className={`category ${filterCategory === null ? '' : ''}`}><a href={`#`} onClick={() => { setFilterCategory(null) }}>All</a></span>
+        {categories.map(cat => (
+          <span key={cat} className={`category ${filterCategory === cat.toLowerCase() ? 'active' : ''}`}><a href={`#`} onClick={() => {
+            setFilterCategory((prevState) => {
+              if (prevState?.toLowerCase() === cat.toLowerCase()) return null
+              else return cat.toLowerCase()
+            })
+          }}>{cat}</a></span>
+        ))}
+      </span>
+    </div>
+
+    <div>
+      <span style={{}}>Tags:</span>
+      <span style={{}}>
+        <span key="all" className={`tag ${filterTags.length === 0 ? '' : ''}`}><a href={`#`} onClick={() => { setFilterTags([]) }}>All</a></span>
+        {tags.map(tag => (
+          <span key={tag} className={`tag ${filterTags.includes(tag.toLowerCase()) ? 'active' : ''}`}>
+            <a href={`#`} onClick={() => {
+              setFilterTags((prevState) => {
+                if (prevState.includes(tag)) return prevState.filter(t => t !== tag.toLowerCase())
+                else return [...prevState, tag.toLowerCase()]
+              })
+            }}>{tag} {filterTags.includes(tag.toLowerCase()) ? 'x' : ''}</a>
+          </span>
+        ))}
+        </span>
+    </div>
+
+    <ul>
+    {filteredRecipes.map((recipe) => {
+      return (<li key={recipe.file}>
+        <div><a href={`#/recipes/${recipe.file.replace(/\.md$/, '')}`}>{recipe.name}</a></div>
+        <span>{recipe.category}</span>
+        <span style={{padding: 0}}>
+          {recipe.tags.map(tag => {
+            return (<span key={tag} className="tag">{tag}</span>)
+          })}
+        </span>
+      </li>)
+    })}
+    </ul>
+  </>
+}
+
+// function Recipe() {
+//   const [count, setCount] = React.useState(0)
+//   return <>
+//     <h2>Hello world!</h2>
+//   </>
+// }
+</script>
+</body>
+</html>

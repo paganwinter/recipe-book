@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Recipes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+:root { font-family: sans-serif; }
+
+.category {
+  padding: 5px;
+  margin: 5px;
+}
+.category.active {
+  background: #444;
+  color: #fff;
+}
+.category.active a {
+  background: #444;
+  color: #fff;
+}
+
+.tag {
+  padding: 5px;
+  margin: 5px;
+  background: #eee;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+.tag.active {
+  background: #444;
+  color: #fff;
+}
+.tag.active a {
+  background: #444;
+  color: #fff;
+}
+</style>
+</head>
+
+<body>
+<div id="root">
+  <input type="text" id="filter-search" placeholder="Search...">
+  <select id="filter-category">
+    <option value="">-</option>
+  </select>
+  <div id="filter-tags">
+    <!-- <label><input type="checkbox" value="tag-1">tag-1</label> -->
+  </div>
+  <div id="recipes-list"></div>
+</div>
+
+<script>
+window.onload = async function () {
+  const $searchInput = document.getElementById('filter-search')
+  const $categorySelect = document.getElementById('filter-category')
+  const $tagsContainer = document.getElementById('filter-tags')
+  const $tagCheckboxes = []
+  const $recipesList = document.getElementById('recipes-list')
+
+  const recipes = await fetch('recipes.json').then((res) => res.json())
+  console.log('recipes:', recipes)
+  renderRecipes(recipes)
+
+  const categories = [...new Set(recipes.map(rec => rec.category))]
+  console.log('categories:', categories)
+
+  const tags = [...new Set(recipes.flatMap(rec => rec.tags))]
+  console.log('tags:', tags)
+
+  categories.forEach(cat => {
+    $categorySelect.add(new Option(cat, cat))
+  })
+
+  tags.forEach(tag => {
+    const tagId = `tag_${tag.replaceAll('-', '_')}`
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = tagId; // Unique ID for each checkbox
+    checkbox.name = 'tags'; // Common name for grouping
+    checkbox.value = tag;
+
+    const label = document.createElement('label');
+
+    label.appendChild(checkbox);
+    label.appendChild(document.createTextNode(tag));
+
+    $tagsContainer.appendChild(label);
+    $tagCheckboxes.push(checkbox)
+  });
+
+  [$searchInput, $categorySelect, ...$tagCheckboxes].forEach(el =>
+    el.addEventListener('input', filterRecipes)
+  );
+
+  function filterRecipes() {
+    const q = $searchInput.value.toLowerCase();
+    const selectedCategory = $categorySelect.value;
+    const selectedTags = Array.from($tagCheckboxes)
+      .filter(c => c.checked)
+      .map(c => c.value);
+    console.log(q, selectedCategory, selectedTags)
+
+    const filtered = recipes.filter(rec => {
+      if (q && !rec.rawContent.toLowerCase().includes(q)) return false
+      if (selectedCategory && rec.category !== selectedCategory) return false
+      if (selectedTags.length > 0 && !selectedTags.every(t => rec.tags.includes(t))) return false
+      return true
+    });
+    console.log('filtered:', filtered)
+    renderRecipes(filtered)
+  }
+
+  function renderRecipes(recipes) {
+    $recipesList.innerHTML = recipes.map(rec => {
+      return `
+        <div class="recipe-summary">
+          <h4><a href="recipes/${rec.file}">${rec.name}</a></h4>
+          <span class="category">${rec.category}</span>
+          <span>${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
+        </div>
+      `
+    }).join('')
+  }
+}
+
+// function RecipesList({ recipes: allRecipes }) {
+//   const [filterSearch, setFilterSearch] = React.useState('')
+//   const [filterCategory, setFilterCategory] = React.useState(null)
+//   const [filterTags, setFilterTags] = React.useState([])
+
+//   const categories = [...new Set(allRecipes.map(rec => rec.category))]
+//   const tags = [...new Set(allRecipes.flatMap(rec => rec.tags))]
+
+//   let filteredRecipes = [...allRecipes]
+
+//   console.log({filterSearch, filterCategory, filterTags})
+//   if (filterSearch) {
+//     filteredRecipes = filteredRecipes.filter(rec => {
+//       return JSON.stringify(rec).toLowerCase().includes(filterSearch)
+//     })
+//   }
+//   if (filterCategory) {
+//     filteredRecipes = filteredRecipes.filter(rec => {
+//       return rec.category.toLowerCase() === filterCategory
+//     })
+//   }
+//   console.log('filterTags:', filterTags)
+//   if (filterTags.length) {
+//     filteredRecipes = filteredRecipes.filter(rec => {
+//       return filterTags.every(searchTag => rec.tags.some(recTag => recTag.toLowerCase() === searchTag))
+//     })
+//   }
+//   console.log({filteredRecipes})
+
+//   return <>
+//     <h2>Recipes</h2>
+//     <form>
+//       <input type="text" placeholder="Search..." value={filterSearch} onChange={(e) => {
+//         setFilterSearch(e.target.value.toLowerCase())
+//         // setFilters((prevState) => {
+//         //   return { ...prevState, search: e.target.value.toLowerCase() }
+//         // })
+//         // filterRecipes()
+//       }}/>
+//     </form>
+
+//     <div>
+//       Categories:
+//       <span>
+//         <span key="all" className={`category ${filterCategory === null ? '' : ''}`}><a href={`#`} onClick={() => { setFilterCategory(null) }}>All</a></span>
+//         {categories.map(cat => (
+//           <span key={cat} className={`category ${filterCategory === cat.toLowerCase() ? 'active' : ''}`}><a href={`#`} onClick={() => {
+//             setFilterCategory((prevState) => {
+//               if (prevState?.toLowerCase() === cat.toLowerCase()) return null
+//               else return cat.toLowerCase()
+//             })
+//           }}>{cat}</a></span>
+//         ))}
+//       </span>
+//     </div>
+
+//     <div>
+//       <span style={{}}>Tags:</span>
+//       <span style={{}}>
+//         <span key="all" className={`tag ${filterTags.length === 0 ? '' : ''}`}><a href={`#`} onClick={() => { setFilterTags([]) }}>All</a></span>
+//         {tags.map(tag => (
+//           <span key={tag} className={`tag ${filterTags.includes(tag.toLowerCase()) ? 'active' : ''}`}>
+//             <a href={`#`} onClick={() => {
+//               setFilterTags((prevState) => {
+//                 if (prevState.includes(tag)) return prevState.filter(t => t !== tag.toLowerCase())
+//                 else return [...prevState, tag.toLowerCase()]
+//               })
+//             }}>{tag} {filterTags.includes(tag.toLowerCase()) ? 'x' : ''}</a>
+//           </span>
+//         ))}
+//         </span>
+//     </div>
+
+//     <ul>
+//     {filteredRecipes.map((recipe) => {
+//       return (<li key={recipe.file}>
+//         <div><a href={`#/recipes/${recipe.file.replace(/\.md$/, '')}`}>{recipe.name}</a></div>
+//         <span>{recipe.category}</span>
+//         <span style={{padding: 0}}>
+//           {recipe.tags.map(tag => {
+//             return (<span key={tag} className="tag">{tag}</span>)
+//           })}
+//         </span>
+//       </li>)
+//     })}
+//     </ul>
+//   </>
+// }
+
+// function Recipe() {
+//   const [count, setCount] = React.useState(0)
+//   return <>
+//     <h2>Hello world!</h2>
+//   </>
+// }
+</script>
+</body>
+</html>

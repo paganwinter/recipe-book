@@ -1,5 +1,6 @@
 ---
-tags: [kootaan, sambar]
+category: kootan
+tags: [savoury, daily]
 ---
 
 # Sambar
@@ -7,5 +8,5 @@ tags: [kootaan, sambar]
 ## Ingredients
 - Tur dal
 
-## Steps
+## Instructions
 1. 

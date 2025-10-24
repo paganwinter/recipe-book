@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - master
+  push:
+    branches:
+      - main
 jobs:
   run-script:
     runs-on: ubuntu-latest
@@ -22,13 +22,12 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run Node.js script
+      - name: Run compile script
         run: node scripts/compile-recipes.js
 
       - name: Configure Git
         run: |
           git config --global user.name "github-actions[bot]"
-          # git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Commit changes
@@ -38,7 +37,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "chore: refresh data"
+            git commit -m "chore: refresh recipes"
             # git push origin HEAD:${{ github.ref_name }}
             git push
           fi

@@ -5,7 +5,7 @@ cook-time: 1h 30m
 serves: 3
 ---
 
-# Dish name
+# Recipe Template
 What is this dish about
 
 ---

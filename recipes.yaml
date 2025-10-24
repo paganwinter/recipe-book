@@ -1,3 +1,87 @@
+- file: pulikyachal.md
+  name: Pulikyachal
+  category: Pickle
+  tags:
+    - savoury
+    - chutney
+    - onam
+  recipeMd: |
+    # Pulikyachal
+    Tamarind based pickle/chutney
+
+    ---
+    ## Ingredients
+
+    ### Main
+    - Sesame oil `70 %`
+    - Vegetable oil `30 %`
+    - Peanuts
+    - Mustard
+    - Urud dal
+    - Channa dal
+    - Green chillies
+    - Tamarid paste
+    - Jaggery
+    - Asafoetida (hing)
+    - Turmeric
+    - Sesame
+    - Ginger
+    - Salt
+
+    ---
+    ## Directions
+
+    ### Main
+    1. Heat oil
+    2. Add peanuts
+    3. Add mustard
+    4. After mustard sputters, add urud dal and channa dal
+    5. Once dals are red, add chillies
+    6. After a bit add tamarind paste
+    7. Add asafoetida, turmeric, salt, and jaggery
+    8. Heat till it thickens
+    9. Add mix (urud dal, dry chilly, sesame) and ginger
+  contentRaw: |
+    ---
+    category: Pickle
+    tags: [savoury, chutney, onam]
+    ---
+
+    # Pulikyachal
+    Tamarind based pickle/chutney
+
+    ---
+    ## Ingredients
+
+    ### Main
+    - Sesame oil `70 %`
+    - Vegetable oil `30 %`
+    - Peanuts
+    - Mustard
+    - Urud dal
+    - Channa dal
+    - Green chillies
+    - Tamarid paste
+    - Jaggery
+    - Asafoetida (hing)
+    - Turmeric
+    - Sesame
+    - Ginger
+    - Salt
+
+    ---
+    ## Directions
+
+    ### Main
+    1. Heat oil
+    2. Add peanuts
+    3. Add mustard
+    4. After mustard sputters, add urud dal and channa dal
+    5. Once dals are red, add chillies
+    6. After a bit add tamarind paste
+    7. Add asafoetida, turmeric, salt, and jaggery
+    8. Heat till it thickens
+    9. Add mix (urud dal, dry chilly, sesame) and ginger
 - file: recipe-template.md
   name: Recipe Template
   category: kootan
@@ -142,73 +226,6 @@
     ---
     ## Notes
     > some notes about the dish here
-- file: test-recipe-2.md
-  name: Test recipe 2
-  category: Kootan
-  tags:
-    - savoury
-    - onam
-  recipeMd: |
-    # Test recipe 2
-    Made for Onam
-
-    ---
-    ## Ingredients
-
-    ### Paste
-    - Coconut (grated) `1 cup`
-    - Tamarid
-    - Salt `to taste`
-    - Coconut (grated): 1 cup
-    - Tamarid
-    - Salt: to taste
-
-    ### Garnish
-    - curry leaves `4 no`
-
-    ---
-    ## Directions
-
-    ### Paste
-    1. Soak tamarind in warm water for 10 minutes, then extract the juice.
-    2. Grind coconut with tamarind juice to make a smooth paste.
-    3. Add water to adjust consistency if needed.
-
-    ### Garnish
-    1. Garnish with currey leaves and coriander
-  contentRaw: |
-    ---
-    category: Kootan
-    tags: [savoury, onam]
-    ---
-
-    # Test recipe 2
-    Made for Onam
-
-    ---
-    ## Ingredients
-
-    ### Paste
-    - Coconut (grated) `1 cup`
-    - Tamarid
-    - Salt `to taste`
-    - Coconut (grated): 1 cup
-    - Tamarid
-    - Salt: to taste
-
-    ### Garnish
-    - curry leaves `4 no`
-
-    ---
-    ## Directions
-
-    ### Paste
-    1. Soak tamarind in warm water for 10 minutes, then extract the juice.
-    2. Grind coconut with tamarind juice to make a smooth paste.
-    3. Add water to adjust consistency if needed.
-
-    ### Garnish
-    1. Garnish with currey leaves and coriander
 - file: uppu-chigadai.md
   name: Uppu Chigadai (Cheedai)
   category: snacks

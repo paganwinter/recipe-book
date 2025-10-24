@@ -41,7 +41,7 @@
 
 <body>
 <div id="root">
-  <input type="text" id="filter-search" placeholder="Search...">
+  <input type="search" id="filter-search" placeholder="Search...">
   <select id="filter-category">
     <option value="">-</option>
   </select>
@@ -116,7 +116,7 @@ window.onload = async function () {
     $recipesList.innerHTML = recipes.map(rec => {
       return `
         <div class="recipe-summary">
-          <h4><a href="recipes/${rec.file}">${rec.name}</a></h4>
+          <h4><a href="recipes/${rec.file.replace(/\.md$/, '')}">${rec.name}</a></h4>
           <span class="category">${rec.category}</span>
           <span>${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
         </div>

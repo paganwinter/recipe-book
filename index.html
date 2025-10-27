@@ -27,6 +27,22 @@ h4 {
 .recipe h2 {
   text-transform: uppercase;
 }
+.ingredient-name {
+}
+.instruction-ingredient {
+  background: #eee;
+  /* font-style: italic; */
+  font-weight: bold;
+}
+.ingredient-quantity {
+  font-size: 14px;
+  background: #e8e8e8;
+  border-radius: 3px;
+  padding: 0px 5px;
+  margin-right: 5px;
+}
+
+
 .recipe code {
   font-size: 14px;
   background: #e8e8e8;
@@ -96,7 +112,6 @@ h4 {
 
 <script>
 window.onload = async function () {
-  console.log(window)
   const $searchInput = document.getElementById('filter-search')
   const $categorySelect = document.getElementById('filter-category')
   const $tagsContainer = document.getElementById('filter-tags')
@@ -158,6 +173,7 @@ window.onload = async function () {
   }
 
 
+
   window.addEventListener('hashchange', handleHashChange);
   handleHashChange();
   function handleHashChange() {
@@ -178,7 +194,13 @@ window.onload = async function () {
       filterRecipes()
     } else if (urlParts.pathname.match(/^\/recipes\/(.+)$/)) {
       const [, recipeId] = urlParts.pathname.match(/^\/recipes\/(.+)$/)
-      renderRecipe(recipeId)
+      const recipe = recipes.find(rec => rec.file.replace(/\.md$/, '') === recipeId)
+      if (!recipe) {
+        console.log(`recipe ${recipeId} not found`)
+        renderNotFound()
+        return
+      }
+      renderRecipe(recipe)
     } else {
       renderNotFound()
     }
@@ -221,7 +243,20 @@ window.onload = async function () {
       `
     }).join('')
   }
-  async function renderRecipe(recipeId) {
+
+  function parseIngredient(i) {
+    const [ingredient, quantity] = i.split(/\s*@\s*/)
+    const match = ingredient.match(/^(.+?)\s*\(([^)]+)\)$/)
+    if (match) {
+      return {
+        name: match[1],
+        note: match[2],
+        quantity,
+      }
+    }
+    return { name: ingredient, quantity }
+  }
+  async function renderRecipe(rec) {
     marked.use({
       async: false,
       pedantic: false,
@@ -229,22 +264,108 @@ window.onload = async function () {
       // 'marked-gfm-heading-id': true,
     })
 
-    const rec = recipes.find(rec => rec.file.replace(/\.md$/, '') === recipeId)
-    if (!rec) {
-      console.log(`recipe ${recipeId} not found`)
-      renderNotFound()
-      return
-    }
     console.log('displaying recipe', rec)
 
     document.title = rec.name
     // $recipesList.style.display = 'none'
     // $recipeDetails.style.display = 'block'
+
+    if (!rec.ingredients) {
+      $mainContainer.innerHTML = `
+        <div class="recipe">
+          <h1>${rec.name}</h1>
+          <section class="recipe-info">
+            <div class="category">Category: ${rec.category}</div>
+            <div class="tags">Tags: ${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+          </section>
+          <hr />
+          <section class="recipe-ingredients recipe-instructions">
+            <div>${marked.parse(rec.recipeMd)}</div>
+          </section>
+          <hr />
+        </div>
+        <hr />
+        <details>
+          <summary>raw</summary>
+          <pre>${rec.contentRaw}</pre>
+        </details>
+      `
+      return
+    }
+
+    const ingredientNames = []
+    const ingredients = {}
+    Object.entries(rec.ingredients).forEach(([group, items]) => {
+      ingredients[group] = {
+        group,
+        items: [],
+      }
+      items.forEach(i => {
+        if (typeof i === 'string') {
+          const {name, note, quantity} = parseIngredient(i)
+          ingredients[group].items.push({name, quantity})
+          name.split(/\s+/).forEach(p => ingredientNames.push(p))
+        } else {
+          const nestedGroup = Object.keys(i)[0]
+          const nestedItems = Object.values(i)[0]
+          ingredients[nestedGroup] = {
+            group: nestedGroup,
+            items: []
+          }
+          nestedItems.forEach(ni => {
+            const [name, quantity] = ni.split('@')
+            ingredients[nestedGroup].items.push({name, quantity})
+            name.split(/\s+/).forEach(p => ingredientNames.push(p))
+          })
+        }
+      })
+    })
+    // console.log(ingredients)
+    // console.log(allIngredients)
+
+    let instructions = rec.instructions.replace(/\s*\|/, '')
+    ingredientNames.forEach(i => {
+      console.log(new RegExp(i, 'gi'))
+      instructions = instructions.replaceAll(new RegExp(i, 'gi'), `<span class="instruction-ingredient">${i}</span>`)
+    })
+    console.log(instructions)
+
     $mainContainer.innerHTML = `
-      <!-- <h4>${rec.name}</h4> -->
-      <span class="category">${rec.category}</span>
-      <span>${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
-      <div class="recipe">${marked.parse(rec.recipeMd)}</div>
+      <div class="recipe">
+        <h1>${rec.name}</h1>
+        <section class="recipe-info">
+          <div class="category">Category: ${rec.category}</div>
+          <div class="tags">Tags: ${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+          <div class="prep-time">Prep Time: ${rec.prep_time}</div>
+          <div class="cook-time">Cook Time: ${rec.cook_time}</div>
+        </section>
+        <hr />
+        <!-- <details><summary>ingrRaw</summary>${marked.parse(rec.ingrRaw)}</details> -->
+        <section class="recipe-ingredients">
+          <h2>Ingredients</h2>
+          ${Object.values(ingredients).map(({ group, items }) => {
+            return `
+              <h3>${group}</h3>
+              <ul>
+                ${items.map(i => {
+                  return `
+                    <li>
+                      <span class="ingredient-name">${i.name}</span>
+                      ${i.quantity ? `<span class="ingredient-quantity">${i.quantity}</span>` : ''}
+                    </li>`
+                  }).join('')
+                }
+              </ul>
+            `
+          }).join('')}
+        </section>
+        <hr />
+        <section class="recipe-instructions">
+          <h2>Instructions</h2>
+          <div>${marked.parse(instructions)}</div>
+        </section>
+      </div>
+      <hr />
       <details>
         <summary>raw</summary>
         <pre>${rec.contentRaw}</pre>

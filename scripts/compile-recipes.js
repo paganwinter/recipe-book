@@ -56,18 +56,38 @@ async function main() {
   // // console.log(marked.parse(recipeMd));
   // console.log(marked.lexer(recipeMd));
 
-  const recipesRaw = fs.readdirSync('./recipes')
-    .filter((file) => file.endsWith('.md'))
-    .map((file) => {
-      return {
-        file,
-        content: fs.readFileSync(`./recipes/${file}`, 'utf-8'),
-      }
-    })
-  // console.log(recipesRaw)
 
-  const recipesParsed = recipesRaw.map(({ file, content }) => {
+  const recipes = []
+  fs.readdirSync('./recipes')
+  .filter((file) => file.endsWith('.yaml'))
+  .forEach((file) => {
     console.log(`parsing recipe ${file}...`)
+    const content = fs.readFileSync(`./recipes/${file}`, 'utf-8')
+
+    // const [info, ingredients, instructions] = yaml.loadAll(content)
+    const parts = content.split(/^---\s+/m)
+    const info = yaml.load(parts[0])
+    const ingredients = yaml.load(parts[1])
+    const instructions = parts[2]
+
+    if (typeof info.tags === 'string') info.tags = info.tags.split(/\s*,\s*/)
+    const recipe = {
+      file,
+      ...info,
+      ingredients,
+      ingrRaw: parts[1],
+      instructions,
+      contentRaw: content,
+    }
+    recipes.push(recipe)
+  })
+
+  fs.readdirSync('./recipes')
+  .filter((file) => file.endsWith('.md'))
+  .forEach((file) => {
+    console.log(`parsing recipe ${file}...`)
+    const content = fs.readFileSync(`./recipes/${file}`, 'utf-8')
+
     const matched = content.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
     if (!matched) {
       console.error(`Error parsing ${file}... ignoring it`)
@@ -90,18 +110,18 @@ async function main() {
     // const descriptionMd = recipeMd.match(/(^#+\s.*$\n)((?:.|\n)*?)(?=(^#+\s.*$|\n*$))/gm)
     // console.log(descriptionMd)
 
-    return {
+    recipes.push({
       file,
       name,
       ...metadata,
       recipeMd,
       contentRaw: content,
-    }
+    });
   })
 
   // require('util').inspect.defaultOptions.depth = null;
   // console.log(recipesParsed)
-  fs.writeFileSync('recipes.json', JSON.stringify(recipesParsed), 'utf-8');
-  fs.writeFileSync('recipes.yaml', yaml.dump(recipesParsed), 'utf-8');
+  fs.writeFileSync('recipes.json', JSON.stringify(recipes), 'utf-8');
+  fs.writeFileSync('recipes.yaml', yaml.dump(recipes), 'utf-8');
 }
 main();

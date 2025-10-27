@@ -203,9 +203,114 @@
       - Carrots
     Garnish:
       - Coriander leaves
-  ingrRaw: "# ingredients\r\n\r\nMain:\r\n- Tur dal (soaked overnight, or 2 hours) @ 1 cup\r\n- Coconut (grated) @ 1 cup\r\n- Chillies @ 3\r\n- Salt\r\n- Nested:\r\n  - nested item\r\nVegetables:\r\n- Potato @ 3\r\n- Carrots\r\nGarnish:\r\n- Coriander leaves\r\n\r\n"
-  instructions: "|\r\n### Main\r\nSoak tur dal in warm water overnight and refrigerate overnight.\r\n\r\nGrind coconut with chillies to make a smooth paste.\r\n\r\nBoil potatoes, and mash them. Chop carrots. Add water to adjust consistency if needed.\r\n\r\nAdd salt to taste\r\n\r\n### Garnish\r\n- Garnish with coriander and curry leaves\r\n- Serve hot with something\r\n"
-  contentRaw: "name: Test Recipe\r\ndesc: Sample recipe to test new features\r\ncategory: Mains\r\ntags: savoury, daily ,breakfast\r\nprep_time: 1h 30m\r\ncook_time: 1:30\r\nserves: 3\r\nnotes: |\r\n  > some notes about the dish here\r\n---\r\n# ingredients\r\n\r\nMain:\r\n- Tur dal (soaked overnight, or 2 hours) @ 1 cup\r\n- Coconut (grated) @ 1 cup\r\n- Chillies @ 3\r\n- Salt\r\n- Nested:\r\n  - nested item\r\nVegetables:\r\n- Potato @ 3\r\n- Carrots\r\nGarnish:\r\n- Coriander leaves\r\n\r\n---\r\n|\r\n### Main\r\nSoak tur dal in warm water overnight and refrigerate overnight.\r\n\r\nGrind coconut with chillies to make a smooth paste.\r\n\r\nBoil potatoes, and mash them. Chop carrots. Add water to adjust consistency if needed.\r\n\r\nAdd salt to taste\r\n\r\n### Garnish\r\n- Garnish with coriander and curry leaves\r\n- Serve hot with something\r\n"
+  ingrRaw: |+
+    # ingredients
+
+    Main:
+    - Tur dal (soaked overnight, or 2 hours) @ 1 cup
+    - Coconut (grated) @ 1 cup
+    - Chillies @ 3
+    - Salt
+    - Nested:
+      - nested item
+    Vegetables:
+    - Potato @ 3
+    - Carrots
+    Garnish:
+    - Coriander leaves
+
+  instructions: >
+    |
+
+    ### Main
+
+    Soak tur dal in warm water overnight and refrigerate overnight.
+
+
+    Grind coconut with chillies to make a smooth paste.
+
+
+    Boil potatoes, and mash them. Chop carrots. Add water to adjust consistency
+    if needed.
+
+
+    Add salt to taste
+
+
+    ### Garnish
+
+    - Garnish with coriander and curry leaves
+
+    - Serve hot with something
+  contentRaw: >
+    name: Test Recipe
+
+    desc: Sample recipe to test new features
+
+    category: Mains
+
+    tags: savoury, daily ,breakfast
+
+    prep_time: 1h 30m
+
+    cook_time: 1:30
+
+    serves: 3
+
+    notes: |
+      > some notes about the dish here
+    ---
+
+    # ingredients
+
+
+    Main:
+
+    - Tur dal (soaked overnight, or 2 hours) @ 1 cup
+
+    - Coconut (grated) @ 1 cup
+
+    - Chillies @ 3
+
+    - Salt
+
+    - Nested:
+      - nested item
+    Vegetables:
+
+    - Potato @ 3
+
+    - Carrots
+
+    Garnish:
+
+    - Coriander leaves
+
+
+    ---
+
+    |
+
+    ### Main
+
+    Soak tur dal in warm water overnight and refrigerate overnight.
+
+
+    Grind coconut with chillies to make a smooth paste.
+
+
+    Boil potatoes, and mash them. Chop carrots. Add water to adjust consistency
+    if needed.
+
+
+    Add salt to taste
+
+
+    ### Garnish
+
+    - Garnish with coriander and curry leaves
+
+    - Serve hot with something
 - file: doshai.md
   name: Doshai
   category: Palahaaram

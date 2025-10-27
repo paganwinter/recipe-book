@@ -26,12 +26,27 @@ h4 {
 
 .recipe h2 {
   text-transform: uppercase;
+  margin: 10px 0;
+  font-size: 1.4em;
+}
+.recipe h3 {
+  margin: 5px 0;
+  font-size: 1em;
+}
+.ingredients {
+}
+.ingredients ul {
+  list-style: none;
+  padding-left: 5px;
+  margin: 0;
+}
+.ingredients li {
 }
 .ingredient-name {
 }
 .instruction-ingredient {
   background: #eee;
-  /* font-style: italic; */
+  font-style: italic;
   font-weight: bold;
 }
 .ingredient-quantity {
@@ -320,15 +335,15 @@ window.onload = async function () {
         }
       })
     })
-    // console.log(ingredients)
-    // console.log(allIngredients)
+    console.log({ingredients})
+    console.log({ingredientNames})
 
     let instructions = rec.instructions.replace(/\s*\|/, '')
     ingredientNames.forEach(i => {
       console.log(new RegExp(i, 'gi'))
       instructions = instructions.replaceAll(new RegExp(i, 'gi'), `<span class="instruction-ingredient">${i}</span>`)
     })
-    console.log(instructions)
+    console.log({instructions})
 
     $mainContainer.innerHTML = `
       <div class="recipe">
@@ -341,7 +356,7 @@ window.onload = async function () {
         </section>
         <hr />
         <!-- <details><summary>ingrRaw</summary>${marked.parse(rec.ingrRaw)}</details> -->
-        <section class="recipe-ingredients">
+        <section class="ingredients">
           <h2>Ingredients</h2>
           ${Object.values(ingredients).map(({ group, items }) => {
             return `
@@ -350,7 +365,7 @@ window.onload = async function () {
                 ${items.map(i => {
                   return `
                     <li>
-                      <span class="ingredient-name">${i.name}</span>
+                      <label><input type="checkbox" /><span class="ingredient-name">${i.name}</span></label>
                       ${i.quantity ? `<span class="ingredient-quantity">${i.quantity}</span>` : ''}
                     </li>`
                   }).join('')

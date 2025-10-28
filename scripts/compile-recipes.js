@@ -1,59 +1,19 @@
-// require('util').inspect.defaultOptions.depth = null;
 const fs = require('fs');
-// const path = require('path');
 
 const yaml = require('js-yaml');
 
-// import { marked } from 'marked';
 // const { marked } = require('marked');
 
 
-const sample = `---
-# category: kootan1
-# tags: [savoury1, daily1]
----
-
-# Dish name
-What is this dish about
-
-- **category**: kootan2
-- **tags**: savoury2, daily2
-
----
-
-## Ingredients
-
-### Paste
-- Coconut (grated) \`1 cup\`
-- Tamarid
-- Salt \`to taste\`
-- Coconut (grated): 1 cup
-- Tamarid
-- Salt: to taste
-
-### Garnish
-- curry leaves \`4 no\`
-
----
-
-## Directions
-### Paste
-- Soak tamarind in warm water for 10 minutes, then extract the juice.
-- Grind coconut with tamarind juice to make a smooth paste.
-- Add water to adjust consistency if needed.
-### Garnish
-- Garnish with currey leaves and coriander
-`
 
 async function main() {
   // const recipeMd = fs.readFileSync('recipes/recipe-1.md', 'utf-8');
-  // const recipeMd = sample
   // marked.use({
   //   async: false,
   //   pedantic: false,
   //   gfm: true,
   // });
-  // // console.log(marked.parse(recipeMd));
+  // console.log(marked.parse(recipeMd));
   // console.log(marked.lexer(recipeMd));
 
 
@@ -70,14 +30,11 @@ async function main() {
     const ingredients = yaml.load(parts[1])
     const instructions = parts[2]
 
-    if (typeof info.tags === 'string') info.tags = info.tags.split(/\s*,\s*/)
     const recipe = {
       file,
       ...info,
       ingredients,
-      ingrRaw: parts[1],
       instructions,
-      contentRaw: content,
     }
     recipes.push(recipe)
   })
@@ -103,19 +60,13 @@ async function main() {
     }
 
     const name = content.match(/^# (.+)$/m)[1];
-    // const category = content.match(/^-?\s*\**category\**\s*:\s*(.+)$/m)?.[1] ?? 'uncategorised';
-    // const tags = content.match(/^-?\s*\**tags\**\s*:\s*(.+)$/m)?.[1]?.replace(/^\[|\]$/g, '')?.split(/\s*,\s*/) ?? [];
-    // const descriptionMd = recipeMd.match(/^# .+?[\n\r](.+)## /);
-    // const descriptionMd = recipeMd.match(/^# (.+?)[\n\r]+(.+?)[\n\r]+## /s);
-    // const descriptionMd = recipeMd.match(/(^#+\s.*$\n)((?:.|\n)*?)(?=(^#+\s.*$|\n*$))/gm)
-    // console.log(descriptionMd)
 
     recipes.push({
       file,
       name,
       ...metadata,
       recipeMd,
-      contentRaw: content,
+      // contentRaw: content,
     });
   })
 

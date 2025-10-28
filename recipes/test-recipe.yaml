@@ -15,8 +15,11 @@ Main:
 - Coconut (grated) @ 1 cup
 - Chillies @ 3
 - Salt
-- Nested:
-  - nested item
+- VegetablesN:
+  - Potato @ 3
+  - Carrots
+- GarnishN:
+  - Coriander leaves
 Vegetables:
 - Potato @ 3
 - Carrots

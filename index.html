@@ -44,6 +44,9 @@ h4 {
 }
 .ingredient-name {
 }
+.ingredient-note {
+  color: #888;
+}
 .instruction-ingredient {
   background: #eee;
   font-style: italic;
@@ -136,6 +139,10 @@ window.onload = async function () {
   const $mainContainer = document.getElementById('main')
 
   const recipes = await fetch('recipes.json').then((res) => res.json())
+  recipes.forEach((r) => {
+    if (typeof r.tags === 'string') r.tags = r.tags.split(/\s*,\s*/)
+  })
+
   console.log('recipes:', recipes)
   const categories = [...new Set(recipes.map(rec => rec.category))]
   console.log('categories:', categories)
@@ -254,6 +261,7 @@ window.onload = async function () {
           <h4><a href="#/recipes/${recipeId}">${rec.name}</a></h4>
           <span class="category">${rec.category}</span>
           <span>${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
+          <a style="font-size: 12px;" href="https://github.com/paganwinter/recipe-book/blob/main/recipes/${rec.file}">${rec.file}</a>
         </div>
       `
     }).join('')
@@ -261,11 +269,11 @@ window.onload = async function () {
 
   function parseIngredient(i) {
     const [ingredient, quantity] = i.split(/\s*@\s*/)
-    const match = ingredient.match(/^(.+?)\s*\(([^)]+)\)$/)
-    if (match) {
+    const ingrNote = ingredient.match(/^(.+?)\s*\(([^)]+)\)$/)
+    if (ingrNote) {
       return {
-        name: match[1],
-        note: match[2],
+        name: ingrNote[1],
+        note: ingrNote[2],
         quantity,
       }
     }
@@ -276,7 +284,6 @@ window.onload = async function () {
       async: false,
       pedantic: false,
       gfm: true,
-      // 'marked-gfm-heading-id': true,
     })
 
     console.log('displaying recipe', rec)
@@ -285,10 +292,9 @@ window.onload = async function () {
     // $recipesList.style.display = 'none'
     // $recipeDetails.style.display = 'block'
 
-    if (!rec.ingredients) {
+    if (rec.recipeMd) {
       $mainContainer.innerHTML = `
         <div class="recipe">
-          <h1>${rec.name}</h1>
           <section class="recipe-info">
             <div class="category">Category: ${rec.category}</div>
             <div class="tags">Tags: ${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
@@ -302,7 +308,7 @@ window.onload = async function () {
         <hr />
         <details>
           <summary>raw</summary>
-          <pre>${rec.contentRaw}</pre>
+          <pre>${JSON.stringify(rec, null, 2)}</pre>
         </details>
       `
       return
@@ -316,32 +322,33 @@ window.onload = async function () {
         items: [],
       }
       items.forEach(i => {
-        if (typeof i === 'string') {
-          const {name, note, quantity} = parseIngredient(i)
-          ingredients[group].items.push({name, quantity})
+        if (typeof i !== 'object') {
+          const {name, note, quantity} = parseIngredient(`${i}`)
+          ingredients[group].items.push({name, note, quantity})
           name.split(/\s+/).forEach(p => ingredientNames.push(p))
-        } else {
-          const nestedGroup = Object.keys(i)[0]
-          const nestedItems = Object.values(i)[0]
-          ingredients[nestedGroup] = {
-            group: nestedGroup,
-            items: []
-          }
-          nestedItems.forEach(ni => {
-            const [name, quantity] = ni.split('@')
-            ingredients[nestedGroup].items.push({name, quantity})
-            name.split(/\s+/).forEach(p => ingredientNames.push(p))
-          })
+          return
         }
+
+        const [nestedGroup, nestedItems] = Object.entries(i)[0]
+        ingredients[nestedGroup] = {
+          group: nestedGroup,
+          items: []
+        }
+        nestedItems.forEach(ni => {
+          const {name, note, quantity} = parseIngredient(`${ni}`)
+          ingredients[nestedGroup].items.push({name, note, quantity})
+          name.split(/\s+/).forEach(p => ingredientNames.push(p))
+        })
       })
     })
-    console.log({ingredients})
-    console.log({ingredientNames})
+    console.log('ingredients:', ingredients)
+    console.log('ingredientNames:', ingredientNames)
 
     let instructions = rec.instructions.replace(/\s*\|/, '')
     ingredientNames.forEach(i => {
-      console.log(new RegExp(i, 'gi'))
-      instructions = instructions.replaceAll(new RegExp(i, 'gi'), `<span class="instruction-ingredient">${i}</span>`)
+      // instructions = instructions.replaceAll(new RegExp(i, 'gi'), `<span class="instruction-ingredient">${i}</span>`)
+      instructions = instructions.replaceAll(new RegExp(`\\s${i}\\s`, 'gi'), ` ***${i}*** `)
+      // instructions = instructions.replaceAll(new RegExp(`\\s${i}\\s`, 'gi'), ` <span class="_inst-ingr_">${i}</span> `)
     })
     console.log({instructions})
 
@@ -349,13 +356,13 @@ window.onload = async function () {
       <div class="recipe">
         <h1>${rec.name}</h1>
         <section class="recipe-info">
-          <div class="category">Category: ${rec.category}</div>
-          <div class="tags">Tags: ${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
-          <div class="prep-time">Prep Time: ${rec.prep_time}</div>
-          <div class="cook-time">Cook Time: ${rec.cook_time}</div>
+          <div class="category"><b>Category:</b> ${rec.category}</div>
+          <div class="tags"><b>Tags:</b> ${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+          ${rec.prep_time && `<div class="prep-time"><b>Prep Time:</b> ${rec.prep_time}</div>` || ''}
+          ${rec.cook_time && `<div class="cook-time"><b>Cook Time:</b> ${rec.cook_time}</div>` || ''}
+          ${rec.desc && `<div class="description">${marked.parse(rec.desc)}</div>` || '' }
         </section>
         <hr />
-        <!-- <details><summary>ingrRaw</summary>${marked.parse(rec.ingrRaw)}</details> -->
         <section class="ingredients">
           <h2>Ingredients</h2>
           ${Object.values(ingredients).map(({ group, items }) => {
@@ -366,6 +373,7 @@ window.onload = async function () {
                   return `
                     <li>
                       <label><input type="checkbox" /><span class="ingredient-name">${i.name}</span></label>
+                      ${i.note ? `<span class="ingredient-note">(${i.note})</span>` : ''}
                       ${i.quantity ? `<span class="ingredient-quantity">${i.quantity}</span>` : ''}
                     </li>`
                   }).join('')
@@ -383,7 +391,7 @@ window.onload = async function () {
       <hr />
       <details>
         <summary>raw</summary>
-        <pre>${rec.contentRaw}</pre>
+        <pre>${JSON.stringify(rec, null, 2)}</pre>
       </details>
     `
   }

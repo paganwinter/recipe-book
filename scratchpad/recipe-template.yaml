@@ -1,49 +1,132 @@
 name: Dish name
 description: |
-  What is this dish about
-category: kootan
-tags: [savoury, daily]
-cook-time: 1h 30m
+  What is this **dish** about
+category: Mains
+tags: savoury, daily
+prep_time: 1h 30m
+cook_time: 1:30
 serves: 3
+images:
+- 
+- 
 
-ingredients-1:
-- for: Paste
-  notes: some notes
-  items:
-  - [coconut, 1 cup]
-  - [tamarid, some]
-- for: Garnish
-  items:
-  - [curry leaves, a few]
+---
+# ingredients 1
 
-ingredients-2:
-  Paste:
-    notes: some notes
-    items:
-    - [coconut, 1 cup]
-    - [tamarid, some]
-  Garnish:
-    items:
-    - [curry leaves, a few]
+note: Some note here
 
-instructions-1:
-- for: Paste
-  steps:
-  - Soak tamarind in warm water for 10 minutes, then extract the juice.
-  - Grind coconut with tamarind juice to make a smooth paste.
-  - Add water to adjust consistency if needed.
-- for: Garnish
-  steps:
-  - Garnish with curry leaves and coriander
+Main:
+- Tur dal: 2 tsp
+- Chillies (green): 2
+- Salt
 
-instructions-2:
-  Paste: |
-    1. Soak tamarind in warm water for 10 minutes, then extract the juice.
-    2. Grind coconut with tamarind juice to make a smooth paste.
-    3. Add water to adjust consistency if needed.
-  Garnish: |
-    1. Garnish with curry leaves and coriander
+Vegetables:
+- Onion: 3
+- Potato
 
-notes: |
-  - Adjust the sourness by varying the amount of tamarind.
-  - You can add vegetables like drumsticks or carrots for variation.
+Garnish:
+- coriander: 3
+- parsley
+
+---
+# ingredients 2
+# unused
+
+- note: Some note here
+- Some note here
+
+- Tur dal: 2 tsp
+- Chillies (green): 2
+- Salt
+- Vegetables:
+  - Onion: 3
+  - Potato
+
+- Garnish:
+  - coriander: 3
+  - parsley
+
+---
+# ingredients 3
+# unused
+
+note: Some note here
+
+Tur dal: 2 tsp
+Chillies (green): 2
+Salt:
+
+Vegetables:
+  Onion: 3
+  Potato:
+
+Garnish:
+  coriander: 3
+  parsley:
+
+---
+# steps
+Paste:
+- Soak tamarind in warm water for 10 minutes, then extract the juice.
+- Grind coconut with tamarind juice to make a smooth paste.
+- Add water to adjust consistency if needed.
+
+Garnish:
+- Garnish with curry leaves and coriander
+
+---
+# steps
+# as markdown
+steps: |
+  ## Paste
+  Soak tamarind in warm water for 10 minutes, then extract the juice.
+  Grind coconut with tamarind juice to make a smooth paste.
+  Add water to adjust consistency if needed.
+
+  ## Garnish
+  Garnish with curry leaves and coriander
+
+---
+
+# ---
+# ingredients-1:
+# - for: Paste
+#   notes: some notes
+#   items:
+#   - [coconut, 1 cup]
+#   - [tamarid, some]
+# - for: Garnish
+#   items:
+#   - [curry leaves, a few]
+
+# ingredients-2:
+#   Paste:
+#     notes: some notes
+#     items:
+#     - [coconut, 1 cup]
+#     - [tamarid, some]
+#   Garnish:
+#     items:
+#     - [curry leaves, a few]
+
+# instructions-1:
+# - for: Paste
+#   steps:
+#   - Soak tamarind in warm water for 10 minutes, then extract the juice.
+#   - Grind coconut with tamarind juice to make a smooth paste.
+#   - Add water to adjust consistency if needed.
+# - for: Garnish
+#   steps:
+#   - Garnish with curry leaves and coriander
+
+# instructions-2:
+#   Paste: |
+#     1. Soak tamarind in warm water for 10 minutes, then extract the juice.
+#     2. Grind coconut with tamarind juice to make a smooth paste.
+#     3. Add water to adjust consistency if needed.
+#   Garnish: |
+#     1. Garnish with curry leaves and coriander
+
+# notes: |
+#   - Adjust the sourness by varying the amount of tamarind.
+#   - You can add vegetables like drumsticks or carrots for variation.

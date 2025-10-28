@@ -33,7 +33,6 @@ jobs:
       - name: Commit changes
         run: |
           git add recipes.json
-          git add recipes.yaml
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else

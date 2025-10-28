@@ -1,7 +1,7 @@
 name: Doshai
-desc: Its a dish
-category: Palahaaram
-tags: savoury, daily, breakfast
+desc: 
+category: Breakfast
+tags: [savoury, daily, breakfast, palakkad]
 prep_time: 5:00
 cook_time: 0:10
 notes: |
@@ -21,6 +21,7 @@ Optional:
 - Poha @ 2 tbsp
 - Chana dal @ 2 tbsp
 ---
+|
 ### Batter
 - Mix rice, dal, methi and wash 2-3 times.
 - Soak until submerged for 1 hour.

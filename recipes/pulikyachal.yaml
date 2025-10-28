@@ -1,17 +1,13 @@
+name: Pulikyachal
+desc: Tamarind based pickle/chutney
+category: Pickles
+tags: [savoury, chutney, onam, palakkad]
 ---
-category: Pickle
-tags: [savoury, chutney, onam]
----
+# ingredients
 
-# Pulikyachal
-Tamarind based pickle/chutney
-
----
-## Ingredients
-
-### Main
-- Sesame oil `70 %`
-- Vegetable oil `30 %`
+Main:
+- Sesame oil @ 70 %
+- Vegetable oil @ 30 %
 - Peanuts
 - Mustard
 - Urud dal
@@ -26,9 +22,7 @@ Tamarind based pickle/chutney
 - Salt
 
 ---
-## Directions
-
-### Main
+|
 1. Heat oil
 2. Add peanuts
 3. Add mustard

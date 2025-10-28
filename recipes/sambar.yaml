@@ -1,19 +1,15 @@
+name: Sambar
+category: Mains
+tags: [savoury, daily, sambar, kootan, palakkad]
 ---
-category: Kootan
-tags: [savoury, daily]
----
-
-# Sambar
-
----
-## Ingredients
-### Main
-- Tamarind `1 tbsp`
-- Tur dal `1 cup`
+# ingredients
+Main:
+- Tamarind @ 1 tbsp
+- Tur dal @ 1 cup
 - Salt
 - Turmeric
 
-### Vegetables
+Vegetables:
 - Elavan (Ash gourd)
 - Drumstick
 - Ladies Finger
@@ -27,26 +23,25 @@ tags: [savoury, daily]
 - Onion
 - Capsicum
 
-### Masala
-- Coconut grated `1 cup`
-- Chana dal `1 tbsp`
-- Red Chilli `4-5 nos`
-- Coriander seeds `1 tsp`
-- Fenugreek seeds `1/4 tsp`
-- Asafoetida `1/4 tsp`
-- Vegetable oil `1/2 tsp`
+Masala:
+- Coconut (grated) @ 1 cup
+- Chana dal @ 1 tbsp
+- Red Chilli @ 4-5 nos
+- Coriander seeds @ 1 tsp
+- Fenugreek seeds @ 1/4 tsp
+- Asafoetida @ 1/4 tsp
+- Vegetable oil @ 1/2 tsp
 
-### Porichukotta / Tadka
-- Mustard	`1 tsp`
+Tadka:
+- Mustard @ 1 tsp
 - Curry leaves
-- Oil `1 tbsp`
+- Oil @ 1 tbsp
 
-### Garnish
+Garnish:
 - Coriander leaves
 
 ---
-## Instructions
-### Main
+|
 1. Boil tur dal with turmeric in a cooker (3 whistles or more). Add soaked tamarind in a separate bowl along with it.
 2. Boil vegetables with turmeric powder.
    - Ladies Finger, Tomato, Avarrakai, Pumpkin, Brinjal, Capsicum, Sweet Potato, Potato, Onion - 10-15 mins in water or 1-2 whistles in a cooker.

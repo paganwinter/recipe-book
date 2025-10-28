@@ -1,12 +1,9 @@
+name: Molagootal
+category: Mains
+tags: [savoury, daily, molagootal, kootan, palakkad] 
 ---
-category: Kootan
-tags: [savoury, daily] 
----
-# Molagootal
-
----
-## Ingredients
-### Main
+# ingredients
+Main:
 - Turmeric
 - Chilly powder
 - Coconut (grated)
@@ -15,16 +12,14 @@ tags: [savoury, daily]
 - Urud dal
 - Oil
 - Salt
-
-### Vegetables
+Vegetables:
 - Ash Gourd
 - Raw Banana
 - Chaenai (Yam)
 - Sweet Potato
 - Carrot
-
 ---
-## Instructions
+|
 1. Boil tur dal, vegetables (Ash Gourd, Raw Banana, Chennai (Yam), Sweet Potato, Carrot), turmeric, chilly powder, and water in a cooker (3 whistles).
 2. Add salt, and boil for 3 minutes.
 3. Grind grated coconut and jeera to a paste and add to the boiling mixture; cook for 2 minutes.

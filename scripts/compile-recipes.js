@@ -71,8 +71,8 @@ async function main() {
   })
 
   // require('util').inspect.defaultOptions.depth = null;
-  // console.log(recipesParsed)
+  // console.log(recipes)
   fs.writeFileSync('recipes.json', JSON.stringify(recipes), 'utf-8');
-  fs.writeFileSync('recipes.yaml', yaml.dump(recipes), 'utf-8');
+  // fs.writeFileSync('recipes.yaml', yaml.dump(recipes), 'utf-8');
 }
 main();

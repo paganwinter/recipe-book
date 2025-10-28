@@ -1,0 +1,14 @@
+name: Sample
+desc: 
+category: Mains
+tags: []
+prep_time: 
+cook_time: 
+serves: 
+---
+# ingredients
+Main:
+- name @ quantity
+---
+|
+- step 1

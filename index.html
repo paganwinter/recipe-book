@@ -20,10 +20,22 @@ body {
 a {
   color: #06c;
 }
-h4 {
-  margin: 15px 0;
-}
 
+.category {
+  /* padding: 5px; */
+  /* margin: 5px; */
+}
+.tag {
+  padding: 2px 8px;
+  margin: 0 3px;
+  background: #e8e8e8;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+.label {
+  font-weight: bold;
+}
 .recipe h2 {
   text-transform: uppercase;
   margin: 10px 0;
@@ -43,14 +55,11 @@ h4 {
 .ingredients li {
 }
 .ingredient-name {
+  font-style: italic;
 }
 .ingredient-note {
-  color: #888;
-}
-.instruction-ingredient {
-  background: #eee;
   font-style: italic;
-  font-weight: bold;
+  color: #888;
 }
 .ingredient-quantity {
   font-size: 14px;
@@ -58,6 +67,15 @@ h4 {
   border-radius: 3px;
   padding: 0px 5px;
   margin-right: 5px;
+}
+.-ingr- {
+  background: #eee;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.instructions .selected {
+  background: #ffb;
 }
 
 
@@ -74,35 +92,6 @@ h4 {
   padding-left: 10px;
 }
 
-.category {
-  /* padding: 5px; */
-  /* margin: 5px; */
-}
-.category.active {
-  background: #444;
-  color: #fff;
-}
-.category.active a {
-  background: #444;
-  color: #fff;
-}
-
-.tag {
-  padding: 2px 8px;
-  margin: 0 3px;
-  background: #e8e8e8;
-  border-radius: 5px;
-  display: inline-block;
-  font-size: 14px;
-}
-.tag.active {
-  background: #444;
-  color: #fff;
-}
-.tag.active a {
-  background: #444;
-  color: #fff;
-}
 
 #filter-search {
   padding: 5px;
@@ -138,7 +127,7 @@ window.onload = async function () {
   // const $recipeDetails = document.getElementById('recipe-details')
   const $mainContainer = document.getElementById('main')
 
-  const recipes = await fetch('recipes.json').then((res) => res.json())
+  const recipes = await fetch('recipes.json?cache='+Math.random()).then((res) => res.json())
   recipes.forEach((r) => {
     if (typeof r.tags === 'string') r.tags = r.tags.split(/\s*,\s*/)
   })
@@ -216,7 +205,7 @@ window.onload = async function () {
       filterRecipes()
     } else if (urlParts.pathname.match(/^\/recipes\/(.+)$/)) {
       const [, recipeId] = urlParts.pathname.match(/^\/recipes\/(.+)$/)
-      const recipe = recipes.find(rec => rec.file.replace(/\.md$/, '') === recipeId)
+      const recipe = recipes.find(rec => rec.file.replace(/\.(.+?)$/, '') === recipeId)
       if (!recipe) {
         console.log(`recipe ${recipeId} not found`)
         renderNotFound()
@@ -242,7 +231,7 @@ window.onload = async function () {
       : []
     const filtered = recipes.filter(rec => {
       // if (q && !rec.contentRaw.toLowerCase().includes(q)) return false
-      if (searchTokens.length && !searchTokens.every(tok => rec.contentRaw.toLowerCase().includes(tok))) return false
+      if (searchTokens.length && !searchTokens.every(tok => JSON.stringify(rec).toLowerCase().includes(tok))) return false
       if (category && rec.category !== category) return false
       if (tags.length > 0 && !tags.every(t => rec.tags.includes(t))) return false
       return true
@@ -255,7 +244,7 @@ window.onload = async function () {
     // $recipeDetails.style.display = 'none'
     // $recipesList.style.display = 'block'
     $mainContainer.innerHTML = recipes.map(rec => {
-      const recipeId = rec.file.replace(/\.md$/, '')
+      const recipeId = rec.file.replace(/\.(.+?)$/, '')
       return `
         <div class="recipe-summary">
           <h4><a href="#/recipes/${recipeId}">${rec.name}</a></h4>
@@ -325,7 +314,9 @@ window.onload = async function () {
         if (typeof i !== 'object') {
           const {name, note, quantity} = parseIngredient(`${i}`)
           ingredients[group].items.push({name, note, quantity})
-          name.split(/\s+/).forEach(p => ingredientNames.push(p))
+          name.split(/\s+/).forEach(p => {
+            if (!ingredientNames.includes(p)) ingredientNames.push(p)
+          })
           return
         }
 
@@ -337,7 +328,9 @@ window.onload = async function () {
         nestedItems.forEach(ni => {
           const {name, note, quantity} = parseIngredient(`${ni}`)
           ingredients[nestedGroup].items.push({name, note, quantity})
-          name.split(/\s+/).forEach(p => ingredientNames.push(p))
+          name.split(/\s+/).forEach(p => {
+            if (!ingredientNames.includes(p)) ingredientNames.push(p)
+          })
         })
       })
     })
@@ -346,21 +339,23 @@ window.onload = async function () {
 
     let instructions = rec.instructions.replace(/\s*\|/, '')
     ingredientNames.forEach(i => {
-      // instructions = instructions.replaceAll(new RegExp(i, 'gi'), `<span class="instruction-ingredient">${i}</span>`)
-      instructions = instructions.replaceAll(new RegExp(`\\s${i}\\s`, 'gi'), ` ***${i}*** `)
-      // instructions = instructions.replaceAll(new RegExp(`\\s${i}\\s`, 'gi'), ` <span class="_inst-ingr_">${i}</span> `)
+      // instructions = instructions.replaceAll(new RegExp(`\\W${i}\\W`, 'gi'), ` <span class="-ingr-">${i}</span> `)
+      instructions = instructions.replaceAll(new RegExp(`(\\W)${i}(\\W)`, 'gi'), `$1***${i}***$2`)
     })
     console.log({instructions})
+    const note = rec.note ?? rec.notes
 
     $mainContainer.innerHTML = `
       <div class="recipe">
         <h1>${rec.name}</h1>
-        <section class="recipe-info">
-          <div class="category"><b>Category:</b> ${rec.category}</div>
-          <div class="tags"><b>Tags:</b> ${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
-          ${rec.prep_time && `<div class="prep-time"><b>Prep Time:</b> ${rec.prep_time}</div>` || ''}
-          ${rec.cook_time && `<div class="cook-time"><b>Cook Time:</b> ${rec.cook_time}</div>` || ''}
+        <section class="info">
+          <a style="font-size: 12px;" href="https://github.com/paganwinter/recipe-book/blob/main/recipes/${rec.file}">${rec.file}</a>
+          <div class="category"><span class="label">Category:</span> ${rec.category}</div>
+          <div class="tags"><span class="label">Tags:</span> ${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
+          ${rec.prep_time && `<div class="prep-time"><span class="label">Prep Time:</span> ${rec.prep_time}</div>` || ''}
+          ${rec.cook_time && `<div class="cook-time"><span class="label">Cook Time:</span> ${rec.cook_time}</div>` || ''}
           ${rec.desc && `<div class="description">${marked.parse(rec.desc)}</div>` || '' }
+          ${note && `<div class="note">${marked.parse(note)}</div>` || '' }
         </section>
         <hr />
         <section class="ingredients">
@@ -372,9 +367,11 @@ window.onload = async function () {
                 ${items.map(i => {
                   return `
                     <li>
-                      <label><input type="checkbox" /><span class="ingredient-name">${i.name}</span></label>
-                      ${i.note ? `<span class="ingredient-note">(${i.note})</span>` : ''}
-                      ${i.quantity ? `<span class="ingredient-quantity">${i.quantity}</span>` : ''}
+                      <label>
+                        <input type="checkbox" /><span class="ingredient-name">${i.name}</span>
+                        ${i.note ? `<span class="ingredient-note">(${i.note})</span>` : ''}
+                        ${i.quantity ? `<span class="ingredient-quantity">${i.quantity}</span>` : ''}
+                      </label>
                     </li>`
                   }).join('')
                 }
@@ -383,7 +380,7 @@ window.onload = async function () {
           }).join('')}
         </section>
         <hr />
-        <section class="recipe-instructions">
+        <section class="instructions">
           <h2>Instructions</h2>
           <div>${marked.parse(instructions)}</div>
         </section>
@@ -394,6 +391,20 @@ window.onload = async function () {
         <pre>${JSON.stringify(rec, null, 2)}</pre>
       </details>
     `
+
+    console.log($mainContainer.querySelectorAll('p'))
+    $mainContainer.querySelectorAll('p').forEach(el => {
+      el.addEventListener('click', function (e) {
+        e.stopPropagation()
+        if (e.target === e.currentTarget) e.target.classList.toggle('selected')
+      })
+    })
+    $mainContainer.querySelectorAll('li').forEach(el => {
+      el.addEventListener('click', function (e) {
+        e.stopPropagation()
+        if (e.target === e.currentTarget) e.target.classList.toggle('selected')
+      })
+    })
   }
   function renderNotFound() {
     $mainContainer.innerHTML = `

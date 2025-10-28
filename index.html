@@ -34,7 +34,7 @@ a {
   font-size: 14px;
 }
 .label {
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 .recipe h2 {
   text-transform: uppercase;
@@ -281,28 +281,6 @@ window.onload = async function () {
     // $recipesList.style.display = 'none'
     // $recipeDetails.style.display = 'block'
 
-    if (rec.recipeMd) {
-      $mainContainer.innerHTML = `
-        <div class="recipe">
-          <section class="recipe-info">
-            <div class="category">Category: ${rec.category}</div>
-            <div class="tags">Tags: ${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
-          </section>
-          <hr />
-          <section class="recipe-ingredients recipe-instructions">
-            <div>${marked.parse(rec.recipeMd)}</div>
-          </section>
-          <hr />
-        </div>
-        <hr />
-        <details>
-          <summary>raw</summary>
-          <pre>${JSON.stringify(rec, null, 2)}</pre>
-        </details>
-      `
-      return
-    }
-
     const ingredientNames = []
     const ingredients = {}
     Object.entries(rec.ingredients).forEach(([group, items]) => {
@@ -350,10 +328,17 @@ window.onload = async function () {
         <h1>${rec.name}</h1>
         <section class="info">
           <a style="font-size: 12px;" href="https://github.com/paganwinter/recipe-book/blob/main/recipes/${rec.file}">${rec.file}</a>
-          <div class="category"><span class="label">Category:</span> ${rec.category}</div>
-          <div class="tags"><span class="label">Tags:</span> ${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</div>
-          ${rec.prep_time && `<div class="prep-time"><span class="label">Prep Time:</span> ${rec.prep_time}</div>` || ''}
-          ${rec.cook_time && `<div class="cook-time"><span class="label">Cook Time:</span> ${rec.cook_time}</div>` || ''}
+          <div>
+            <span class="category">${rec.category}</span>
+            <span class="tags">${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
+          </div>
+          <div>
+            ${rec.prep_time && `<span class="prep-time"><span class="label">prep:</span> ${rec.prep_time}</span>` || ''}
+            |
+            ${rec.cook_time && `<span class="cook-time"><span class="label">cook:</span> ${rec.cook_time}</span>` || ''}
+            |
+            ${rec.serves && `<span class="serves"><span class="label">serves:</span> ${rec.serves}</span>` || ''}
+          </div>
           ${rec.desc && `<div class="description">${marked.parse(rec.desc)}</div>` || '' }
           ${note && `<div class="note">${marked.parse(note)}</div>` || '' }
         </section>

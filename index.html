@@ -21,9 +21,41 @@ a {
   color: #06c;
 }
 
+#filter-search {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+#filter-category {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+#filter-tags {
+  display: flex;
+}
+#filter-tags .tag-container {
+  display: flex;
+  align-items: center;
+}
+#filter-tags input[type=checkbox] {
+  display: none;
+}
+#filter-tags :checked + .tag-text {
+  font-weight: bold;
+}
+.tag-text {
+  padding: 2px 8px;
+  margin: 0 3px;
+  background: #eee;
+  border-radius: 5px;
+  display: inline-block;
+  font-size: 14px;
+}
+
 .category {
-  /* padding: 5px; */
-  /* margin: 5px; */
+  /* padding: 5px;
+  margin: 5px; */
 }
 .tag {
   padding: 2px 8px;
@@ -49,7 +81,7 @@ a {
 }
 .ingredients ul {
   list-style: none;
-  padding-left: 5px;
+  padding-left: 0px;
   margin: 0;
 }
 .ingredients li {
@@ -74,6 +106,13 @@ a {
   font-weight: bold;
 }
 
+.instructions ul,
+.instructions ol {
+  padding-left: 18px;
+}
+.instructions p {
+  padding-left: 0px;
+}
 .instructions .selected {
   background: #ffb;
 }
@@ -91,29 +130,26 @@ a {
   margin-left: 10px;
   padding-left: 10px;
 }
-
-
-#filter-search {
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
-}
 </style>
 </head>
 
 <body>
 <div id="root">
-  <input type="search" id="filter-search" placeholder="Search...">
-  <select id="filter-category">
-    <option value="">-</option>
-  </select>
-  <a href="#">clear</a>
-  <div id="filter-tags">
-    <!-- <label><input type="checkbox" value="tag-1">tag-1</label> -->
+  <div id="filter-controls">
+    <input type="search" id="filter-search" placeholder="Search...">
+    <select id="filter-category">
+      <option value="">-</option>
+    </select>
+    <a href="#">clear</a>
+    <div id="filter-tags">
+      <!-- <label><input type="checkbox" value="tag-1">tag-1</label> -->
+    </div>
   </div>
   <div id="main"></div>
+  <!--
   <div id="recipes-list"></div>
   <div id="recipe-details"></div>
+  -->
 </div>
 
 
@@ -127,17 +163,19 @@ window.onload = async function () {
   // const $recipeDetails = document.getElementById('recipe-details')
   const $mainContainer = document.getElementById('main')
 
+
   const recipes = await fetch('recipes.json?cache='+Math.random()).then((res) => res.json())
   recipes.forEach((r) => {
     if (typeof r.tags === 'string') r.tags = r.tags.split(/\s*,\s*/)
   })
-
   console.log('recipes:', recipes)
+
+
+
   const categories = [...new Set(recipes.map(rec => rec.category))]
   console.log('categories:', categories)
   const tags = [...new Set(recipes.flatMap(rec => rec.tags))]
   console.log('tags:', tags)
-
 
   categories.forEach(cat => {
     $categorySelect.add(new Option(cat, cat))
@@ -148,12 +186,19 @@ window.onload = async function () {
     checkbox.type = 'checkbox';
     checkbox.id = tagId; // Unique ID for each checkbox
     checkbox.name = 'tags'; // Common name for grouping
+    checkbox.className = 'tag';
     checkbox.value = tag;
     $tagCheckboxes.push(checkbox);
 
+    const tagLabel = document.createElement('span')
+    tagLabel.innerText = tag
+    tagLabel.className = 'tag-text'
+
     const label = document.createElement('label');
+    label.className = 'tag-container'
     label.appendChild(checkbox);
-    label.appendChild(document.createTextNode(tag));
+    // label.appendChild(document.createTextNode(tag));
+    label.appendChild(tagLabel);
 
     $tagsContainer.appendChild(label);
   });
@@ -167,6 +212,7 @@ window.onload = async function () {
   $searchInput.addEventListener('keydown', () => {
     if (event.key === 'Enter') updateUrlFiltersParams()
   })
+
   function updateUrlFiltersParams() {
     const q = $searchInput.value.toLowerCase();
     const category = $categorySelect.value;
@@ -218,6 +264,7 @@ window.onload = async function () {
   }
 
 
+
   function filterRecipes() {
     const q = $searchInput.value.toLowerCase();
     const category = $categorySelect.value;
@@ -249,12 +296,14 @@ window.onload = async function () {
         <div class="recipe-summary">
           <h4><a href="#/recipes/${recipeId}">${rec.name}</a></h4>
           <span class="category">${rec.category}</span>
-          <span>${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
+          <span>${rec.tags?.map(tag => `<span class="tag-text">${tag}</span>`).join('')}</span>
           <a style="font-size: 12px;" href="https://github.com/paganwinter/recipe-book/blob/main/recipes/${rec.file}">${rec.file}</a>
         </div>
       `
     }).join('')
   }
+
+
 
   function parseIngredient(i) {
     const [ingredient, quantity] = i.split(/\s*@\s*/)
@@ -318,14 +367,14 @@ window.onload = async function () {
     let instructions = rec.instructions.replace(/\s*\|/, '')
     ingredientNames.forEach(i => {
       // instructions = instructions.replaceAll(new RegExp(`\\W${i}\\W`, 'gi'), ` <span class="-ingr-">${i}</span> `)
-      instructions = instructions.replaceAll(new RegExp(`(\\W)${i}(\\W)`, 'gi'), `$1***${i}***$2`)
+      instructions = instructions.replaceAll(new RegExp(`(\\W)(${i})(\\W)`, 'gi'), `$1***$2***$3`)
     })
     console.log({instructions})
     const note = rec.note ?? rec.notes
 
     $mainContainer.innerHTML = `
       <div class="recipe">
-        <h1>${rec.name}</h1>
+        <h1 class="title">${rec.name}</h1>
         <section class="info">
           <a style="font-size: 12px;" href="https://github.com/paganwinter/recipe-book/blob/main/recipes/${rec.file}">${rec.file}</a>
           <div>
@@ -333,10 +382,8 @@ window.onload = async function () {
             <span class="tags">${rec.tags?.map(tag => `<span class="tag">${tag}</span>`).join('')}</span>
           </div>
           <div>
-            ${rec.prep_time && `<span class="prep-time"><span class="label">prep:</span> ${rec.prep_time}</span>` || ''}
-            |
-            ${rec.cook_time && `<span class="cook-time"><span class="label">cook:</span> ${rec.cook_time}</span>` || ''}
-            |
+            ${rec.prep_time && `<span class="prep-time"><span class="label">prep:</span> ${rec.prep_time}</span> | ` || ''}
+            ${rec.cook_time && `<span class="cook-time"><span class="label">cook:</span> ${rec.cook_time}</span> | ` || ''}
             ${rec.serves && `<span class="serves"><span class="label">serves:</span> ${rec.serves}</span>` || ''}
           </div>
           ${rec.desc && `<div class="description">${marked.parse(rec.desc)}</div>` || '' }
@@ -347,20 +394,22 @@ window.onload = async function () {
           <h2>Ingredients</h2>
           ${Object.values(ingredients).map(({ group, items }) => {
             return `
-              <h3>${group}</h3>
-              <ul>
-                ${items.map(i => {
-                  return `
-                    <li>
-                      <label>
-                        <input type="checkbox" /><span class="ingredient-name">${i.name}</span>
-                        ${i.note ? `<span class="ingredient-note">(${i.note})</span>` : ''}
-                        ${i.quantity ? `<span class="ingredient-quantity">${i.quantity}</span>` : ''}
-                      </label>
-                    </li>`
-                  }).join('')
-                }
-              </ul>
+              <div class="ingredient-group">
+                <h3>${group}</h3>
+                <ul>
+                  ${items.map(i => {
+                    return `
+                      <li>
+                        <label>
+                          <input type="checkbox" /><span class="ingredient-name">${i.name}</span>
+                          ${i.note ? `<span class="ingredient-note">(${i.note})</span>` : ''}
+                          ${i.quantity ? `<span class="ingredient-quantity">${i.quantity}</span>` : ''}
+                        </label>
+                      </li>`
+                    }).join('')
+                  }
+                </ul>
+              </div>
             `
           }).join('')}
         </section>
@@ -377,14 +426,14 @@ window.onload = async function () {
       </details>
     `
 
-    console.log($mainContainer.querySelectorAll('p'))
-    $mainContainer.querySelectorAll('p').forEach(el => {
+    console.log($mainContainer.querySelectorAll('.instructions p'))
+    $mainContainer.querySelectorAll('.instructions p').forEach(el => {
       el.addEventListener('click', function (e) {
         e.stopPropagation()
         if (e.target === e.currentTarget) e.target.classList.toggle('selected')
       })
     })
-    $mainContainer.querySelectorAll('li').forEach(el => {
+    $mainContainer.querySelectorAll('.instructions li').forEach(el => {
       el.addEventListener('click', function (e) {
         e.stopPropagation()
         if (e.target === e.currentTarget) e.target.classList.toggle('selected')
